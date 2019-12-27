@@ -8,6 +8,9 @@ public class Item : MonoBehaviour
     [SerializeField]
     Attributes attributes;
 
+    [SerializeField]
+    Projectile projectilePrefab;
+
     private void Start()
     {
         attributes = GetComponent<Attributes>();
