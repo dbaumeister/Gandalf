@@ -67,7 +67,7 @@ public class Enemy_SearchTarget : MonoBehaviour
         Direction = Vector2.zero;
         if (nearestPlayer != null)
         {
-            Debug.Log("Nearest: " + nearestPlayer.transform.position);
+        
             Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
 
 
@@ -94,7 +94,7 @@ public class Enemy_SearchTarget : MonoBehaviour
 
               }*/
         }
-        Debug.Log("MY Direction " + Direction);
+        
     }
     GameObject GetNearestPlayer()
     {
@@ -128,7 +128,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     {
         Rigidbody2D enemyBody = this.gameObject.GetComponent<Rigidbody2D>();
         Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
-        Debug.Log("Move " + move);
+
         enemyBody.MovePosition(Boundaries.ClampPosition(enemyBody.position + move));
     }
 

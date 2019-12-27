@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 3645535857548123278}
   - component: {fileID: 6347034124751443021}
   - component: {fileID: 7830748755521966981}
-  m_Layer: 8
+  m_Layer: 11
   m_Name: Beauraucrat-Projectile_I
-  m_TagString: Untagged
+  m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
