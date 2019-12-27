@@ -2113,8 +2113,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48138d403df0d64da5c5c82abd69ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossRoomLayouts: []
-  fightRoomLayouts: []
-  shopRoomLayouts: []
-  specialRoomLayouts: []
+  bossRoomLayouts:
+  - {fileID: 8055328625856993617, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
+  fightRoomLayouts:
+  - {fileID: 6214033981125799912, guid: 4d8f42943e29e01418021979ac6b8951, type: 3}
+  - {fileID: 1400474899755680842, guid: d6e2fce26a54554409545b063d142387, type: 3}
+  - {fileID: 7921942305942430454, guid: 28e9f52074b71ae449ea7d2dfebc6f15, type: 3}
+  shopRoomLayouts:
+  - {fileID: 8216897552477355502, guid: f202a5e2fc14955488ff321790d29403, type: 3}
+  specialRoomLayouts:
+  - {fileID: 3957628544505217871, guid: d849ee6b6a5e2f14fbc1dd62cc8087c2, type: 3}
   startRoomLayouts: []
