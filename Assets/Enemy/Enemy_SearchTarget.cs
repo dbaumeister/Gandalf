@@ -168,7 +168,8 @@ public class Enemy_SearchTarget : MonoBehaviour
             playerCollider = col.collider;
             int damage = playerCollider.GetComponent<Projectile>().getDamage();
             TakeDamage(damage);
-            anim.SetBool("Hit", false);
+            StartCoroutine(DelayedContin());
+            
         }
     }
 
@@ -179,7 +180,12 @@ public class Enemy_SearchTarget : MonoBehaviour
 
 
     }
-
+    IEnumerator DelayedContin()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetBool("Hit", false);
+    }
 }
 
 

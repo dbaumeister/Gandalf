@@ -36,11 +36,16 @@ public class Projectile : MonoBehaviour
     {
         Vector2 move = MovementSpeed * Direction * Time.fixedDeltaTime;
         rigidbody.MovePosition(rigidbody.position + move);
+        if(rigidbody.position.x > 1000 || rigidbody.position.x < -1000 || rigidbody.position.y > 1000 || rigidbody.position.y < -1000)
+        {
+            killSelf();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (gameObject.tag == "PlayerProjectile" && col.collider.tag == "Enemy") {
+            Debug.Log("Hit ");
             killSelf(); }
         else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
@@ -49,6 +54,14 @@ public class Projectile : MonoBehaviour
            
             killSelf();
         }    
+        else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "PlayerProjectile")
+        {
+            killSelf();
+        }
+        else if(gameObject.tag == "PlayerProjectile" && col.collider.tag == "EnemyProjectile")
+        {
+            killSelf();
+        }
       
     
     }
