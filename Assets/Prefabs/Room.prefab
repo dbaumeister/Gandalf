@@ -373,6 +373,8 @@ MonoBehaviour:
   layout: {fileID: 3736147148752766695}
   type: 0
   currentState: 0
+  enemyPrefabs:
+  - {fileID: 405156937396443045, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
 --- !u!1 &1137998862284588771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,13 +2116,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossRoomLayouts:
-  - {fileID: 8055328625856993617, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
+  - {fileID: 417717978107834831, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
   fightRoomLayouts:
-  - {fileID: 6214033981125799912, guid: 4d8f42943e29e01418021979ac6b8951, type: 3}
-  - {fileID: 1400474899755680842, guid: d6e2fce26a54554409545b063d142387, type: 3}
-  - {fileID: 7921942305942430454, guid: 28e9f52074b71ae449ea7d2dfebc6f15, type: 3}
+  - {fileID: 2853734630301602944, guid: 4d8f42943e29e01418021979ac6b8951, type: 3}
+  - {fileID: 6021904450330687678, guid: d6e2fce26a54554409545b063d142387, type: 3}
+  - {fileID: 6488891996836109224, guid: 28e9f52074b71ae449ea7d2dfebc6f15, type: 3}
   shopRoomLayouts:
-  - {fileID: 8216897552477355502, guid: f202a5e2fc14955488ff321790d29403, type: 3}
+  - {fileID: 3142771014412819250, guid: f202a5e2fc14955488ff321790d29403, type: 3}
   specialRoomLayouts:
-  - {fileID: 3957628544505217871, guid: d849ee6b6a5e2f14fbc1dd62cc8087c2, type: 3}
+  - {fileID: 3217475918033338236, guid: d849ee6b6a5e2f14fbc1dd62cc8087c2, type: 3}
   startRoomLayouts: []

@@ -2,33 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstacleLayout : MonoBehaviour
+public class RoomSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject[] bossRoomLayouts;
+    RoomLayout[] bossRoomLayouts;
 
     [SerializeField]
-    GameObject[] fightRoomLayouts;
+    RoomLayout[] fightRoomLayouts;
 
     [SerializeField]
-    GameObject[] shopRoomLayouts;
+    RoomLayout[] shopRoomLayouts;
 
     [SerializeField]
-    GameObject[] specialRoomLayouts;
+    RoomLayout[] specialRoomLayouts;
 
     [SerializeField]
-    GameObject[] startRoomLayouts;
+    RoomLayout[] startRoomLayouts;
 
-    void InitializeLayout(GameObject[] objs)
+    RoomLayout layout = null;
+
+    void InitializeLayout(RoomLayout[] objs)
     {
         int i = Random.Range(0, objs.Length);
         if (i < objs.Length)
+        {
+            layout = objs[i];
             Instantiate(objs[i], transform);
+        }
     }
 
     public void Initialize(RoomType type)
     {
-        int i = 0;
         switch(type)
         {
             case RoomType.Boss:
@@ -47,5 +51,21 @@ public class ObstacleLayout : MonoBehaviour
                 InitializeLayout(startRoomLayouts);
                 break;
         }
+    }
+
+    public IList<Transform> GetSpawnPoints()
+    {
+        IList<Transform> positions = new List<Transform>();
+        if(!layout)
+        {
+            return positions;
+        }
+
+        GameObject[] objs = layout.SpawnPoints;
+        for(int i = 0; i < objs.Length; ++i)
+        {
+            positions.Add(objs[i].transform);
+        }
+        return positions;
     }
 }

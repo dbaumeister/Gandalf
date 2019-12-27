@@ -15,6 +15,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     float maxDistance;
     Vector2 direction;
     public Vector2 Direction { get => direction; set => direction = value; }
+
     int numberOfSteps;
     [SerializeField]
     int movementSpeed;
@@ -29,6 +30,9 @@ public class Enemy_SearchTarget : MonoBehaviour
     Projectile projectilePrefab;
     bool isIdle;
     private int MAX_STEPS = 12;
+
+    public delegate void Died();
+    public event Died DieCallback;
 
     // Start is called before the first frame update
     void Start()
@@ -176,6 +180,10 @@ public class Enemy_SearchTarget : MonoBehaviour
     IEnumerator DelayedRemove()
     {
         yield return new WaitForSeconds(0.5f);
+        if(DieCallback != null)
+        {
+            DieCallback();
+        }
         Destroy(this.gameObject);
 
 

@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 415545213}
   - component: {fileID: 415545214}
   m_Layer: 0
-  m_Name: LevelLogic
+  m_Name: Level
   m_TagString: Level
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 1254922403}
   - component: {fileID: 1254922404}
   m_Layer: 0
-  m_Name: PlayerInputManager
+  m_Name: PlayerSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
