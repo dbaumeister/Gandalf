@@ -65,6 +65,18 @@ public class Enemy_SearchTarget : MonoBehaviour
         {
             Debug.Log("Nearest: " + nearestPlayer.transform.position);
             Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
+        
+         
+          this.gameObject.GetComponent<SpriteRenderer>().flipX = Direction.x < 0;
+            Animator anim = this.gameObject.GetComponent<Animator>();
+            if (Direction.x * 1.2 < Direction.y && Direction.y > 0)
+            {
+                anim.SetBool("WalkingUpwards", true);
+            }
+            else if(anim.GetBool("WalkingUpwards"))
+            {
+                anim.SetBool("WalkingUpwards",false);
+            }
             numberOfSteps = 12;
         }
         else
@@ -116,7 +128,7 @@ public class Enemy_SearchTarget : MonoBehaviour
         enemyBody.MovePosition(Boundaries.ClampPosition(enemyBody.position + move));
     }
    
-    void Shoot(GameObject nearestPlayer)
+    void Shoot(GameObject nearestPlayeraa)
     {
         if (Time.time > nextShotTime)
         {
