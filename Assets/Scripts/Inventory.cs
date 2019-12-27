@@ -26,10 +26,6 @@ public class Inventory : MonoBehaviour
         if (item)
         {
             items.Add(item);
-            if (item.CompareTag("Projectile"))
-            {
-                ProjectilePrefab prefab = 
-            }
             Destroy(collision.collider.gameObject);
         }
     }
