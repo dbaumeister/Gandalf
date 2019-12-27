@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundaries
+  - Enemy
+  - EnemyProjectile
+  - PlayerProjectile
   - SouthDoor
   - NorthDoor
   - EastDoor
   - WestDoor
-  - Level
   layers:
   - Default
   - TransparentFX
@@ -19,8 +21,8 @@ TagManager:
   - UI
   - 
   - 
-  - PlayerProjectile
-  - Player
+  - 
+  - 
   - 
   - 
   - 
@@ -45,14 +47,11 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 3316180555
+    uniqueID: 3173196913
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Player
-    uniqueID: 869882107
-    locked: 0
-  - name: LoadScreen
-    uniqueID: 1957622341
+  - name: Foreground
+    uniqueID: 3913960595
     locked: 0
