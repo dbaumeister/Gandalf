@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
     Attributes attributes;
 
     [SerializeField]
-    Projectile projectilePrefab;
+    bool permanent = true;
 
     private void Start()
     {
