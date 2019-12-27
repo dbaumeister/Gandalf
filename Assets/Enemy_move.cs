@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy_move : MonoBehaviour
 {
+    [SerializeField]
+    GameObject nearestPlayer;
     // Start is called before the first frame update
     void Start()
     {
