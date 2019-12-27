@@ -76,6 +76,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         appearance.Change(Direction);
+        appearance.attacking = isAttacking;
 
         if(isAttacking)
         {
