@@ -37,7 +37,7 @@ public class SceneLoader : MonoBehaviour
 
     private void SceneUnloadCompleted(AsyncOperation obj)
     {
-        Debug.Log("Scene Unloaded");
+        // Nothing
     }
 
     void LoadScene(string name)
