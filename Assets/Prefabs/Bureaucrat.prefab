@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9aee415d0856948a7c93a0bc5bd2b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 0
+  hitPoints: 8
   nearestPlayer: {fileID: 0}
   speedEnemy: 1
   maxDistance: 50

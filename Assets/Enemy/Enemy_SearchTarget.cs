@@ -29,7 +29,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     Projectile projectilePrefab;
     bool isIdle;
     private int MAX_STEPS = 12;
-    private BoxCollider2D collider;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -154,8 +154,8 @@ public class Enemy_SearchTarget : MonoBehaviour
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Dead", true);
-            
-            Destroy(this.gameObject);
+
+            StartCoroutine(DelayedRemove());
         }
     }
     // called when the cube hits the floor
@@ -164,11 +164,23 @@ public class Enemy_SearchTarget : MonoBehaviour
         Collider2D playerCollider = null;
         if (col.collider.tag == "PlayerProjectile")
         {
+            Animator anim = this.gameObject.GetComponent<Animator>();
+            anim.SetBool("Hit", true);
             playerCollider = col.collider;
             int damage = playerCollider.GetComponent<Projectile>().getDamage();
             TakeDamage(damage);
+            anim.SetBool("Hit", false);
         }
     }
+
+    IEnumerator DelayedRemove()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(this.gameObject);
+
+
+    }
+
 }
 
 

@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]
     Vector2 direction;
-
     [SerializeField]
     float movementSpeed;
     [SerializeField]
@@ -43,6 +42,24 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (gameObject.tag == "PlayerProjectile" && col.collider.tag == "Enemy") {
+            killSelf(); }
+        if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
+        {
+            killSelf();
+        }    
+      
+    
+    }
+        
+       
+    
+    public void killSelf()
+    {
+        Destroy(this.gameObject);
     }
     public int getDamage()
     {
