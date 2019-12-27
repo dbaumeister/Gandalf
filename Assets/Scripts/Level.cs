@@ -13,16 +13,10 @@ public class Level : MonoBehaviour
     [SerializeField]
     Room roomPrefab;
 
-    IDictionary<Room, Door> incomingConnections;
-    IDictionary<Room, Door> outgoingConnections;
-
     // Start is called before the first frame update
     void Start()
     {
         rooms = new List<Room>();
-
-        outgoingConnections = new Dictionary<Room, Door>();
-        incomingConnections = new Dictionary<Room, Door>();
 
         // Create all rooms
         int start = AddRoom(RoomType.Start);
@@ -46,40 +40,43 @@ public class Level : MonoBehaviour
         AddVerticalConnection(rooms[shop], rooms[conn]);
 
         conn = 1 + Random.Range(0, roomCount);
-        AddVerticalConnection(rooms[conn], rooms[shop]);
+        AddVerticalConnection(rooms[conn], rooms[special]);
 
         rooms[start].EnterRoom(DoorPosition.West);
     }
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)
     {
-        AddConnection(leftRoom, rightRoom, DoorPosition.East, DoorPosition.West);
+        Door doorInLeftRoom = leftRoom.EastDoor.AddComponent<Door>();
+        doorInLeftRoom.From = leftRoom;
+        doorInLeftRoom.To = rightRoom;
+        doorInLeftRoom.FromPosition = DoorPosition.East;
+        doorInLeftRoom.ToPosition = DoorPosition.West;
+        leftRoom.EastDoor.SetActive(true);
+
+        Door doorInRightRoom = rightRoom.WestDoor.AddComponent<Door>();
+        doorInRightRoom.From = rightRoom;
+        doorInRightRoom.To = leftRoom;
+        doorInRightRoom.FromPosition = DoorPosition.West;
+        doorInRightRoom.ToPosition = DoorPosition.East;
+        rightRoom.WestDoor.SetActive(true);
     }
 
     void AddVerticalConnection(Room upperRoom, Room lowerRoom)
     {
-        AddConnection(upperRoom, lowerRoom, DoorPosition.South, DoorPosition.North);
-    }
+        Door doorInUpperRoom = upperRoom.SouthDoor.AddComponent<Door>();
+        doorInUpperRoom.From = upperRoom;
+        doorInUpperRoom.To = lowerRoom;
+        doorInUpperRoom.FromPosition = DoorPosition.South;
+        doorInUpperRoom.ToPosition = DoorPosition.North;
+        upperRoom.SouthDoor.SetActive(true);
 
-    void AddConnection(Room leftRoom, Room rightRoom, DoorPosition east, DoorPosition west)
-    {
-        Door doorInLeftRoom = new Door();
-        doorInLeftRoom.From = leftRoom;
-        doorInLeftRoom.To = rightRoom;
-        doorInLeftRoom.DoorPosition = east;
-
-        Door doorInRightRoom = new Door();
-        doorInRightRoom.From = rightRoom;
-        doorInRightRoom.To = leftRoom;
-        doorInRightRoom.DoorPosition = west;
-
-        outgoingConnections[leftRoom] = doorInLeftRoom;
-        outgoingConnections[rightRoom] = doorInRightRoom;
-        incomingConnections[leftRoom] = doorInRightRoom;
-        incomingConnections[rightRoom] = doorInLeftRoom;
-
-        leftRoom.Doors.Add(doorInLeftRoom);
-        rightRoom.Doors.Add(doorInRightRoom);
+        Door doorInLowerRoom = lowerRoom.NorthDoor.AddComponent<Door>();
+        doorInLowerRoom.From = lowerRoom;
+        doorInLowerRoom.To = upperRoom;
+        doorInLowerRoom.FromPosition = DoorPosition.North;
+        doorInLowerRoom.ToPosition = DoorPosition.South;
+        lowerRoom.NorthDoor.SetActive(true);
     }
 
     int AddRoom(RoomType type)
@@ -91,7 +88,6 @@ public class Level : MonoBehaviour
         room.EnemyWaves = CreateWaves(type);
         room.Loot = CreateLoot(type);
         room.name = "Room (" + type + ")";
-        room.Doors = new List<Door>();
         rooms.Add(room);
         return rooms.Count - 1;
     }
@@ -117,9 +113,9 @@ public class Level : MonoBehaviour
         return loot;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Transition(Door door)
     {
-        
+        door.From.LeaveRoom();
+        door.To.EnterRoom(door.ToPosition);
     }
 }

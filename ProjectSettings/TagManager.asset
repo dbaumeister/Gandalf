@@ -9,6 +9,7 @@ TagManager:
   - NorthDoor
   - EastDoor
   - WestDoor
+  - Level
   layers:
   - Default
   - TransparentFX

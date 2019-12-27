@@ -75,5 +75,4 @@ public class PlayerSpawner : MonoBehaviour
             inputMap.Add(device, player);
         }
     }
-
 }

@@ -5,7 +5,16 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    IList<Door> doors;
+    GameObject northDoor;
+
+    [SerializeField]
+    GameObject southDoor;
+
+    [SerializeField]
+    GameObject eastDoor;
+
+    [SerializeField]
+    GameObject westDoor;
 
     [SerializeField]
     RoomType type;
@@ -24,7 +33,10 @@ public class Room : MonoBehaviour
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
     public RoomStates CurrentState { get => currentState; set => SetState(value); }
-    public IList<Door> Doors { get => doors; set => doors = value; }
+    public GameObject NorthDoor { get => northDoor; set => northDoor = value; }
+    public GameObject SouthDoor { get => southDoor; set => southDoor = value; }
+    public GameObject EastDoor { get => eastDoor; set => eastDoor = value; }
+    public GameObject WestDoor { get => westDoor; set => westDoor = value; }
 
     void SetState(RoomStates state)
     {
@@ -93,17 +105,42 @@ public class Room : MonoBehaviour
         CurrentState = RoomStates.Done;
     }
 
+    GameObject GetDoor(DoorPosition pos)
+    {
+        switch(pos)
+        {
+            case DoorPosition.East:
+                return EastDoor;
+            case DoorPosition.West:
+                return WestDoor;
+            case DoorPosition.North:
+                return NorthDoor;
+            case DoorPosition.South:
+                return SouthDoor;
+        }
+        return null;
+    }
+
     public void EnterRoom(DoorPosition playerEnter)
     {
-        // TODO set up room assets.
         gameObject.SetActive(true);
+
+        // Get all players and move them to the spawn points.
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        GameObject door = GetDoor(playerEnter);
+        int maxCount = door.transform.childCount;
+        for (int i = 0; i < players.Length; ++i)
+        {
+            Transform child = door.transform.GetChild(i % maxCount);
+            players[i].transform.position = child.position;
+        }
 
         CurrentState = RoomStates.SpawnEnemies;
     }
 
     public void LeaveRoom()
     {
-        // TODO delete all required assets.
         gameObject.SetActive(false);
     }
 }
