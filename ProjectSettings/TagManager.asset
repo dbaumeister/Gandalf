@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundaries
+  - SouthDoor
+  - NorthDoor
+  - EastDoor
+  - WestDoor
   layers:
   - Default
   - TransparentFX
@@ -47,4 +51,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 869882107
+    locked: 0
+  - name: LoadScreen
+    uniqueID: 1957622341
     locked: 0

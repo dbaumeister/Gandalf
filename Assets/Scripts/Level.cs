@@ -10,7 +10,8 @@ public class Level : MonoBehaviour
     [SerializeField]
     int roomCount = 5;
 
-    GameObject empty;
+    [SerializeField]
+    Room roomPrefab;
 
     IDictionary<Room, Door> incomingConnections;
     IDictionary<Room, Door> outgoingConnections;
@@ -18,14 +19,13 @@ public class Level : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        empty = new GameObject();
         rooms = new List<Room>();
 
         outgoingConnections = new Dictionary<Room, Door>();
         incomingConnections = new Dictionary<Room, Door>();
 
         // Create all rooms
-        AddRoom(RoomType.Start);
+        int start = AddRoom(RoomType.Start);
         for(int i = 0; i < roomCount; ++i)
         {
             AddRoom(RoomType.Fight);
@@ -47,6 +47,8 @@ public class Level : MonoBehaviour
 
         conn = 1 + Random.Range(0, roomCount);
         AddVerticalConnection(rooms[conn], rooms[shop]);
+
+        rooms[start].EnterRoom(DoorPosition.West);
     }
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)
@@ -82,8 +84,8 @@ public class Level : MonoBehaviour
 
     int AddRoom(RoomType type)
     {
-        GameObject obj = Instantiate<GameObject>(empty);
-        Room room = obj.AddComponent<Room>();
+        Room room = Instantiate(roomPrefab);;
+        room.gameObject.SetActive(false);
         room.CurrentState = RoomStates.Initial;
         room.Type = type;
         room.EnemyWaves = CreateWaves(type);

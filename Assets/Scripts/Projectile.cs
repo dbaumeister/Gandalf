@@ -32,15 +32,14 @@ public class Projectile : MonoBehaviour
         else return dir.normalized;
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);
+    }
+
     private void FixedUpdate()
     {
         Vector2 move = MovementSpeed * Direction * Time.fixedDeltaTime;
         rigidbody.MovePosition(rigidbody.position + move);
-
-        Vector3 pos = Boundaries.ClampPosition(rigidbody.position);
-        if (pos.x != rigidbody.position.x || pos.y != rigidbody.position.y)
-        {
-            Destroy(gameObject);
-        }
     }
 }

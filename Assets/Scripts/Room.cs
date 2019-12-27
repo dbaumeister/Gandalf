@@ -92,4 +92,18 @@ public class Room : MonoBehaviour
         Debug.Log("TODO: Spawn Loot");
         CurrentState = RoomStates.Done;
     }
+
+    public void EnterRoom(DoorPosition playerEnter)
+    {
+        // TODO set up room assets.
+        gameObject.SetActive(true);
+
+        CurrentState = RoomStates.SpawnEnemies;
+    }
+
+    public void LeaveRoom()
+    {
+        // TODO delete all required assets.
+        gameObject.SetActive(false);
+    }
 }
