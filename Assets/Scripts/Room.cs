@@ -17,6 +17,9 @@ public class Room : MonoBehaviour
     GameObject westDoor;
 
     [SerializeField]
+    ObstacleLayout layout;
+
+    [SerializeField]
     RoomType type;
 
     [SerializeField]
@@ -37,6 +40,7 @@ public class Room : MonoBehaviour
     public GameObject SouthDoor { get => southDoor; set => southDoor = value; }
     public GameObject EastDoor { get => eastDoor; set => eastDoor = value; }
     public GameObject WestDoor { get => westDoor; set => westDoor = value; }
+    public ObstacleLayout Layout { get => layout; set => layout = value; }
 
     void SetState(RoomStates state)
     {

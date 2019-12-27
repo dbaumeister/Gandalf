@@ -88,6 +88,7 @@ public class Level : MonoBehaviour
         room.EnemyWaves = CreateWaves(type);
         room.Loot = CreateLoot(type);
         room.name = "Room (" + type + ")";
+        room.Layout.Initialize(type);
         rooms.Add(room);
         return rooms.Count - 1;
     }

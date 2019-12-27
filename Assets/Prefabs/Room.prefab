@@ -350,6 +350,7 @@ Transform:
   - {fileID: 1137998862126008154}
   - {fileID: 1137998861972270548}
   - {fileID: 1137998862120655353}
+  - {fileID: 1814472213279443134}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -369,6 +370,7 @@ MonoBehaviour:
   southDoor: {fileID: 1137998862322192648}
   eastDoor: {fileID: 1137998862905393569}
   westDoor: {fileID: 1137998863311723700}
+  layout: {fileID: 3736147148752766695}
   type: 0
   currentState: 0
 --- !u!1 &1137998862284588771
@@ -1984,3 +1986,51 @@ Transform:
   m_Father: {fileID: 1137998862834237852}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4943124341565443087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814472213279443134}
+  - component: {fileID: 3736147148752766695}
+  m_Layer: 0
+  m_Name: Obstacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1814472213279443134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943124341565443087}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1137998862174027657}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3736147148752766695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943124341565443087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a48138d403df0d64da5c5c82abd69ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossRoomLayouts: []
+  fightRoomLayouts: []
+  shopRoomLayouts: []
+  specialRoomLayouts: []
+  startRoomLayouts: []
