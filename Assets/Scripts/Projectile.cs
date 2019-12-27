@@ -46,23 +46,15 @@ public class Projectile : MonoBehaviour
     {
         if (gameObject.tag == "PlayerProjectile" && col.collider.tag == "Enemy") {
             Debug.Log("Hit ");
-            killSelf(); }
+            }
         else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
             Debug.Log("Hit one Heart");
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
            
-            killSelf();
-        }    
-        else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "PlayerProjectile")
-        {
-            killSelf();
+         
         }
-        else if(gameObject.tag == "PlayerProjectile" && col.collider.tag == "EnemyProjectile")
-        {
-            killSelf();
-        }
-      
+        killSelf();
     
     }
     
