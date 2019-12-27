@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4486603292683987769
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_Name
+      value: SnowballCollectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779878, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779878, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779878, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779880, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0e89e6459f4efa54eb063c42578097fb,
+        type: 3}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978209484173779883, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744067281021100375, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: attackDelay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744067281021100375, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: projectileSpeed
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2744067281021100375, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: projectileSize
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
