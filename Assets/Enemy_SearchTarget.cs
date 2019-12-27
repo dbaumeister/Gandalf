@@ -29,11 +29,14 @@ public class Enemy_SearchTarget : MonoBehaviour
     Projectile projectilePrefab;
     bool isIdle;
     private int MAX_STEPS = 12;
+    private BoxCollider2D collider;
     // Start is called before the first frame update
     void Start()
     {
         isIdle = true;
         numberOfSteps = MAX_STEPS;
+        //collider = this.gameObject.GetComponent<BoxCollider2D>();
+
     }
 
     // Update is called once per frame
@@ -49,11 +52,12 @@ public class Enemy_SearchTarget : MonoBehaviour
             nearestPlayer = GetNearestPlayer();
         }
         EvaluateDirection();
-    
+
+
     }
 
-    
-     void FixedUpdate()
+
+    void FixedUpdate()
     {
 
         EnemyMove();
@@ -65,30 +69,30 @@ public class Enemy_SearchTarget : MonoBehaviour
         {
             Debug.Log("Nearest: " + nearestPlayer.transform.position);
             Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
-        
-         
-          this.gameObject.GetComponent<SpriteRenderer>().flipX = Direction.x < 0;
+
+
+            this.gameObject.GetComponent<SpriteRenderer>().flipX = Direction.x < 0;
             Animator anim = this.gameObject.GetComponent<Animator>();
             if (Direction.x * 1.2 < Direction.y && Direction.y > 0)
             {
                 anim.SetBool("WalkingUpwards", true);
             }
-            else if(anim.GetBool("WalkingUpwards"))
+            else if (anim.GetBool("WalkingUpwards"))
             {
-                anim.SetBool("WalkingUpwards",false);
+                anim.SetBool("WalkingUpwards", false);
             }
             numberOfSteps = 12;
         }
         else
         {
             isIdle = true;
-          /*  numberOfSteps--;
-            if (numberOfSteps == 0)
-            {
-                Direction = turn(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), this.gameObject);
-                numberOfSteps = UnityEngine.Random.Range(1, 15);
+            /*  numberOfSteps--;
+              if (numberOfSteps == 0)
+              {
+                  Direction = turn(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), this.gameObject);
+                  numberOfSteps = UnityEngine.Random.Range(1, 15);
 
-            }*/
+              }*/
         }
         Debug.Log("MY Direction " + Direction);
     }
@@ -123,11 +127,11 @@ public class Enemy_SearchTarget : MonoBehaviour
     void EnemyMove()
     {
         Rigidbody2D enemyBody = this.gameObject.GetComponent<Rigidbody2D>();
-                Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
+        Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
         Debug.Log("Move " + move);
         enemyBody.MovePosition(Boundaries.ClampPosition(enemyBody.position + move));
     }
-   
+
     void Shoot(GameObject nearestPlayeraa)
     {
         if (Time.time > nextShotTime)
@@ -146,13 +150,25 @@ public class Enemy_SearchTarget : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hitPoints = hitPoints - damage;
-        if(hitPoints <= 0)
+        if (hitPoints <= 0)
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Dead", true);
+            
+            Destroy(this.gameObject);
         }
     }
-
+    // called when the cube hits the floor
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Collider2D playerCollider = null;
+        if (col.collider.tag == "PlayerProjectile")
+        {
+            playerCollider = col.collider;
+            int damage = playerCollider.GetComponent<Projectile>().getDamage();
+            TakeDamage(damage);
+        }
+    }
 }
 
 

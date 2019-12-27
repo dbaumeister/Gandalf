@@ -11,7 +11,8 @@ public class Projectile : MonoBehaviour
 
     [SerializeField]
     float movementSpeed;
-
+    [SerializeField]
+    int damage;
     public Vector2 Direction { get => direction; set => direction = SanitizeDirection(value); }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 
@@ -42,5 +43,9 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    public int getDamage()
+    {
+        return damage;
     }
 }
