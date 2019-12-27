@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Attributes))]
 [RequireComponent(typeof(Appearance))]
-public class Weapon : MonoBehaviour
+public class Slingshot extends Weapon : MonoBehaviour
 {
     Attributes attributes;
     Appearance appearance;
