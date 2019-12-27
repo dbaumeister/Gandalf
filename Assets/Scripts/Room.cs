@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
     Door westDoor;
 
     [SerializeField]
-    ObstacleLayout layout;
+    RoomSpawner layout;
 
     [SerializeField]
     RoomType type;
@@ -32,6 +32,12 @@ public class Room : MonoBehaviour
     [SerializeField]
     RoomStates currentState = RoomStates.Initial;
 
+    [SerializeField]
+    IList<Transform> spawnPoints;
+
+    [SerializeField]
+    Enemy_SearchTarget[] enemyPrefabs;
+
     public RoomType Type { get => type; set => type = value; }
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
@@ -40,7 +46,8 @@ public class Room : MonoBehaviour
     public Door SouthDoor { get => southDoor; set => southDoor = value; }
     public Door EastDoor { get => eastDoor; set => eastDoor = value; }
     public Door WestDoor { get => westDoor; set => westDoor = value; }
-    public ObstacleLayout Layout { get => layout; set => layout = value; }
+    public RoomSpawner Layout { get => layout; set => layout = value; }
+    public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
 
     void SetState(RoomStates state)
     {
@@ -81,24 +88,33 @@ public class Room : MonoBehaviour
 
     void EnterFight()
     {
-        Debug.Log("TODO: Entered Fight");
-
-        while(enemyWaves[currentWave].RemainingEnemies > 0)
+        if(enemyWaves[currentWave].RemainingEnemies <= 0)
         {
-            Debug.Log("Killed Enemy");
-            enemyWaves[currentWave].RemainingEnemies--;
+            currentWave++;
+            CurrentState = RoomStates.SpawnEnemies;
         }
+    }
 
-        Debug.Log("Killed All Enemies");
-        currentWave++;
-        CurrentState = RoomStates.SpawnEnemies;
+    void OnEnemyKill()
+    {
+        enemyWaves[currentWave].RemainingEnemies--;
+        CurrentState = RoomStates.FightEnemies;
     }
 
     void SpawnEnemies()
     {
-        if(currentWave < enemyWaves.Count)
+        if(currentWave < enemyWaves.Count && SpawnPoints.Count > 0)
         {
-            Debug.Log("TODO: Spawn Enemies");
+            // Spawn Enemies
+            EnemyWave enemyWave = enemyWaves[currentWave];
+            for(int i = 0; i < enemyWave.RemainingEnemies; ++i)
+            {
+                int spawnPoint = Random.Range(0, SpawnPoints.Count);
+                int enemy = Random.Range(0, enemyPrefabs.Length);
+                Enemy_SearchTarget target = Instantiate(enemyPrefabs[enemy], spawnPoints[spawnPoint].position, Quaternion.identity, transform);
+                target.DieCallback += OnEnemyKill;
+            }
+
             CurrentState = RoomStates.FightEnemies;
         }
         else

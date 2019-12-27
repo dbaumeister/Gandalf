@@ -11,4 +11,9 @@ public class EnemyWave : MonoBehaviour
 
     public int RemainingEnemies { get => remainingEnemies; set => remainingEnemies = value; }
 
+    private void Start()
+    {
+        RemainingEnemies = Random.Range(2, 4);
+    }
+
 }

@@ -330,6 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3566985978859050812}
+  - component: {fileID: 3142771014412819250}
   m_Layer: 0
   m_Name: RoomLayout_Shop_01
   m_TagString: Untagged
@@ -354,3 +355,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3142771014412819250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8216897552477355502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e2564271bc995346810d662e7686229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoints: []

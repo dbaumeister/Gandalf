@@ -17,9 +17,12 @@ public class PlayerSpawner : MonoBehaviour
         InputSystem.onDeviceChange += OnDeviceChange;
         inputMap = new Dictionary<InputDevice, PlayerInput>();
         removedPlayers = new List<PlayerInput>();
+    }
 
+    private void Start()
+    {
         // Check all devices on the system
-        foreach(InputDevice device in InputSystem.devices)
+        foreach (InputDevice device in InputSystem.devices)
         {
             SpawnPlayer(device);
         }

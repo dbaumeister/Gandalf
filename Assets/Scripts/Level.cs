@@ -89,6 +89,7 @@ public class Level : MonoBehaviour
         room.Loot = CreateLoot(type);
         room.name = "Room (" + type + ")";
         room.Layout.Initialize(type);
+        room.SpawnPoints = room.Layout.GetSpawnPoints();
         rooms.Add(room);
         return rooms.Count - 1;
     }
@@ -98,7 +99,8 @@ public class Level : MonoBehaviour
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         if (type == RoomType.Fight)
         {
-            for (int j = 0; j < 3; ++j) enemyWaves.Add(new EnemyWave());
+            int numWaves = Random.Range(1, 3);
+            for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         else if (type == RoomType.Boss)
         {
