@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class EnemyWave : MonoBehaviour
 {
+    [SerializeField]
     IList<GameObject> enemyPrefabs;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    int remainingEnemies = 5;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int RemainingEnemies { get => remainingEnemies; set => remainingEnemies = value; }
+
 }
