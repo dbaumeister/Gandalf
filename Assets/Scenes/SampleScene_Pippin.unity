@@ -182,6 +182,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1882019352610560237, guid: 22035a4354f4501438f98a9b368d5deb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1882019352610560237, guid: 22035a4354f4501438f98a9b368d5deb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5507959432469620860, guid: 22035a4354f4501438f98a9b368d5deb,
         type: 3}
       propertyPath: speedEnemy
@@ -201,6 +211,16 @@ PrefabInstance:
         type: 3}
       propertyPath: projectileSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507959432469620860, guid: 22035a4354f4501438f98a9b368d5deb,
+        type: 3}
+      propertyPath: projectileSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5507959432469620860, guid: 22035a4354f4501438f98a9b368d5deb,
+        type: 3}
+      propertyPath: attackDelay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6149217581325212739, guid: 22035a4354f4501438f98a9b368d5deb,
         type: 3}
