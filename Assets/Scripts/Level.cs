@@ -47,36 +47,36 @@ public class Level : MonoBehaviour
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)
     {
-        Door doorInLeftRoom = leftRoom.EastDoor.AddComponent<Door>();
+        Door doorInLeftRoom = leftRoom.EastDoor;
         doorInLeftRoom.From = leftRoom;
         doorInLeftRoom.To = rightRoom;
         doorInLeftRoom.FromPosition = DoorPosition.East;
         doorInLeftRoom.ToPosition = DoorPosition.West;
-        leftRoom.EastDoor.SetActive(true);
+        leftRoom.EastDoor.Show();
 
-        Door doorInRightRoom = rightRoom.WestDoor.AddComponent<Door>();
+        Door doorInRightRoom = rightRoom.WestDoor;
         doorInRightRoom.From = rightRoom;
         doorInRightRoom.To = leftRoom;
         doorInRightRoom.FromPosition = DoorPosition.West;
         doorInRightRoom.ToPosition = DoorPosition.East;
-        rightRoom.WestDoor.SetActive(true);
+        rightRoom.WestDoor.Show();
     }
 
     void AddVerticalConnection(Room upperRoom, Room lowerRoom)
     {
-        Door doorInUpperRoom = upperRoom.SouthDoor.AddComponent<Door>();
+        Door doorInUpperRoom = upperRoom.SouthDoor;
         doorInUpperRoom.From = upperRoom;
         doorInUpperRoom.To = lowerRoom;
         doorInUpperRoom.FromPosition = DoorPosition.South;
         doorInUpperRoom.ToPosition = DoorPosition.North;
-        upperRoom.SouthDoor.SetActive(true);
+        upperRoom.SouthDoor.Show();
 
-        Door doorInLowerRoom = lowerRoom.NorthDoor.AddComponent<Door>();
+        Door doorInLowerRoom = lowerRoom.NorthDoor;
         doorInLowerRoom.From = lowerRoom;
         doorInLowerRoom.To = upperRoom;
         doorInLowerRoom.FromPosition = DoorPosition.North;
         doorInLowerRoom.ToPosition = DoorPosition.South;
-        lowerRoom.NorthDoor.SetActive(true);
+        lowerRoom.NorthDoor.Show();
     }
 
     int AddRoom(RoomType type)

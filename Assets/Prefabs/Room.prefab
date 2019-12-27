@@ -366,10 +366,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8ab6f7de4e2c04f994b44ada8d9fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  northDoor: {fileID: 1137998862834237859}
-  southDoor: {fileID: 1137998862322192648}
-  eastDoor: {fileID: 1137998862905393569}
-  westDoor: {fileID: 1137998863311723700}
+  northDoor: {fileID: 1689613677740754229}
+  southDoor: {fileID: 2236396114241319687}
+  eastDoor: {fileID: 8089551964237349602}
+  westDoor: {fileID: 7521549684990519452}
   layout: {fileID: 3736147148752766695}
   type: 0
   currentState: 0
@@ -414,13 +414,14 @@ GameObject:
   - component: {fileID: 1137998862322192645}
   - component: {fileID: 1137998862322192650}
   - component: {fileID: 1137998862322192651}
+  - component: {fileID: 2236396114241319687}
   m_Layer: 0
   m_Name: South
   m_TagString: SouthDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1137998862322192645
 Transform:
   m_ObjectHideFlags: 0
@@ -477,7 +478,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d55cc95a4eb4aba4b80593b9b9b1f9ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -514,6 +515,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.94}
   m_EdgeRadius: 0
+--- !u!114 &2236396114241319687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137998862322192648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de58b0a19b17c4047abab2242f69725c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromPosition: 0
+  toPosition: 0
+  from: {fileID: 0}
+  to: {fileID: 0}
+  closedSprite: {fileID: 21300000, guid: 6ba483ea5a3999a49ad6b6a741c63ecc, type: 3}
+  openedSprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  isOpen: 0
+  isHidden: 1
 --- !u!1 &1137998862358028453
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,13 +987,14 @@ GameObject:
   - component: {fileID: 1137998862834237852}
   - component: {fileID: 1137998862834237853}
   - component: {fileID: 1137998862834237858}
+  - component: {fileID: 1689613677740754229}
   m_Layer: 0
   m_Name: North
   m_TagString: NorthDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1137998862834237852
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,7 +1051,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d55cc95a4eb4aba4b80593b9b9b1f9ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1066,6 +1088,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.94}
   m_EdgeRadius: 0
+--- !u!114 &1689613677740754229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137998862834237859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de58b0a19b17c4047abab2242f69725c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromPosition: 0
+  toPosition: 0
+  from: {fileID: 0}
+  to: {fileID: 0}
+  closedSprite: {fileID: 21300000, guid: 6ba483ea5a3999a49ad6b6a741c63ecc, type: 3}
+  openedSprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  isOpen: 0
+  isHidden: 1
 --- !u!1 &1137998862905393569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,13 +1119,14 @@ GameObject:
   - component: {fileID: 1137998862905393570}
   - component: {fileID: 1137998862905393571}
   - component: {fileID: 1137998862905393568}
+  - component: {fileID: 8089551964237349602}
   m_Layer: 0
   m_Name: East
   m_TagString: EastDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1137998862905393570
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,7 +1183,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d55cc95a4eb4aba4b80593b9b9b1f9ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1177,6 +1220,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.94}
   m_EdgeRadius: 0
+--- !u!114 &8089551964237349602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137998862905393569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de58b0a19b17c4047abab2242f69725c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromPosition: 0
+  toPosition: 0
+  from: {fileID: 0}
+  to: {fileID: 0}
+  closedSprite: {fileID: 21300000, guid: 6ba483ea5a3999a49ad6b6a741c63ecc, type: 3}
+  openedSprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  isOpen: 0
+  isHidden: 1
 --- !u!1 &1137998863028318649
 GameObject:
   m_ObjectHideFlags: 0
@@ -1492,13 +1555,14 @@ GameObject:
   - component: {fileID: 1137998863311723697}
   - component: {fileID: 1137998863311723702}
   - component: {fileID: 1137998863311723703}
+  - component: {fileID: 7521549684990519452}
   m_Layer: 0
   m_Name: West
   m_TagString: WestDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1137998863311723697
 Transform:
   m_ObjectHideFlags: 0
@@ -1555,7 +1619,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d55cc95a4eb4aba4b80593b9b9b1f9ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1592,6 +1656,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.17, y: 0.94}
   m_EdgeRadius: 0
+--- !u!114 &7521549684990519452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137998863311723700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de58b0a19b17c4047abab2242f69725c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fromPosition: 0
+  toPosition: 0
+  from: {fileID: 0}
+  to: {fileID: 0}
+  closedSprite: {fileID: 21300000, guid: 6ba483ea5a3999a49ad6b6a741c63ecc, type: 3}
+  openedSprite: {fileID: 21300000, guid: 7b4ae3807d6ca9742ad8e8e9440969b2, type: 3}
+  isOpen: 0
+  isHidden: 1
 --- !u!1 &1137998863501915293
 GameObject:
   m_ObjectHideFlags: 0

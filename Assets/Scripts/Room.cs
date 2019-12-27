@@ -5,16 +5,16 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    GameObject northDoor;
+    Door northDoor;
 
     [SerializeField]
-    GameObject southDoor;
+    Door southDoor;
 
     [SerializeField]
-    GameObject eastDoor;
+    Door eastDoor;
 
     [SerializeField]
-    GameObject westDoor;
+    Door westDoor;
 
     [SerializeField]
     ObstacleLayout layout;
@@ -36,10 +36,10 @@ public class Room : MonoBehaviour
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
     public RoomStates CurrentState { get => currentState; set => SetState(value); }
-    public GameObject NorthDoor { get => northDoor; set => northDoor = value; }
-    public GameObject SouthDoor { get => southDoor; set => southDoor = value; }
-    public GameObject EastDoor { get => eastDoor; set => eastDoor = value; }
-    public GameObject WestDoor { get => westDoor; set => westDoor = value; }
+    public Door NorthDoor { get => northDoor; set => northDoor = value; }
+    public Door SouthDoor { get => southDoor; set => southDoor = value; }
+    public Door EastDoor { get => eastDoor; set => eastDoor = value; }
+    public Door WestDoor { get => westDoor; set => westDoor = value; }
     public ObstacleLayout Layout { get => layout; set => layout = value; }
 
     void SetState(RoomStates state)
@@ -73,6 +73,10 @@ public class Room : MonoBehaviour
     void FinishedRoom()
     {
         Debug.Log("TODO: Finished Room");
+        northDoor.Open();
+        southDoor.Open();
+        eastDoor.Open();
+        westDoor.Open();
     }
 
     void EnterFight()
@@ -106,10 +110,11 @@ public class Room : MonoBehaviour
     void SpawnLoot()
     {
         Debug.Log("TODO: Spawn Loot");
+
         CurrentState = RoomStates.Done;
     }
 
-    GameObject GetDoor(DoorPosition pos)
+    Door GetDoor(DoorPosition pos)
     {
         switch(pos)
         {
@@ -132,13 +137,18 @@ public class Room : MonoBehaviour
         // Get all players and move them to the spawn points.
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        GameObject door = GetDoor(playerEnter);
+        Door door = GetDoor(playerEnter);
         int maxCount = door.transform.childCount;
         for (int i = 0; i < players.Length; ++i)
         {
             Transform child = door.transform.GetChild(i % maxCount);
             players[i].transform.position = child.position;
         }
+
+        northDoor.Close();
+        southDoor.Close();
+        eastDoor.Close();
+        westDoor.Close();
 
         CurrentState = RoomStates.SpawnEnemies;
     }
