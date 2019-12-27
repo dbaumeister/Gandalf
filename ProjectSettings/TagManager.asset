@@ -12,6 +12,8 @@ TagManager:
   - NorthDoor
   - EastDoor
   - WestDoor
+  - Undefined
+  - GroupValues
   layers:
   - Default
   - TransparentFX
@@ -21,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Enemy
+  - EnemyProjectiles
+  - Player
+  - PlayerProjectiles
   - 
   - 
   - 

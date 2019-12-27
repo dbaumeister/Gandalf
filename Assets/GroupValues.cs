@@ -17,11 +17,13 @@ public class GroupValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Hearts " + hearts);
         if(hearts <= 0)
         {
             GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in allPlayers)
             {
+                
                 Destroy(player);
             }
         }
