@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +15,17 @@ public class Enemy_SearchTarget : MonoBehaviour
     public Vector2 Direction { get => direction; set => direction = value; }
     int numberOfSteps;
     [SerializeField]
-    int movementSpeed;w
+    int movementSpeed;
+    float nextShotTime;
+    [SerializeField]
+    float projectileSpeed;
+    [SerializeField]
+    float projectileSize;
+    [SerializeField]
+    float attackDelay;
+    [SerializeField]
+    Projectile projectilePrefab;
+    bool isAttacking;
     private int MAX_STEPS = 12;
     // Start is called before the first frame update
     void Start()
@@ -28,8 +39,14 @@ public class Enemy_SearchTarget : MonoBehaviour
 
         nearestPlayer = GetNearestPlayer();
         EvaluateDirection();
+        if(nearestPlayer != null)
+        {
+            Shoot(nearestPlayer);
+        }
 
     }
+
+    
     private void FixedUpdate()
     {
         EnemyMove();
@@ -46,8 +63,8 @@ public class Enemy_SearchTarget : MonoBehaviour
             numberOfSteps--;
             if (numberOfSteps == 0)
             {
-                Direction = turn(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), this.gameObject);
-                numberOfSteps = Random.Range(1, 15);
+                Direction = turn(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), this.gameObject);
+                numberOfSteps = UnityEngine.Random.Range(1, 15);
 
             }
         }
@@ -86,6 +103,20 @@ public class Enemy_SearchTarget : MonoBehaviour
                 Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
         enemyBody.MovePosition(Boundaries.ClampPosition(enemyBody.position + move));
     }
+   
+    void Shoot(GameObject nearestPlayer)
+    {
+        if (Time.time > nextShotTime)
+        {
+            Projectile projectile = Instantiate(projectilePrefab);
+            projectile.transform.position = transform.position;
+            projectile.MovementSpeed = projectileSpeed;
+            projectile.Direction = Direction;
+            projectile.transform.localScale = Vector3.one * projectileSize;
+            nextShotTime = Time.time + attackDelay;
+        }
+    }
+
 }
 
 
