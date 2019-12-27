@@ -6,6 +6,8 @@ using UnityEngine;
 public class Enemy_SearchTarget : MonoBehaviour
 {
     [SerializeField]
+    int hitPoints;
+    [SerializeField]
     GameObject nearestPlayer;
     [SerializeField]
     float speedEnemy;
@@ -25,49 +27,58 @@ public class Enemy_SearchTarget : MonoBehaviour
     float attackDelay;
     [SerializeField]
     Projectile projectilePrefab;
-    bool isAttacking;
+    bool isIdle;
     private int MAX_STEPS = 12;
     // Start is called before the first frame update
     void Start()
     {
+        isIdle = true;
         numberOfSteps = MAX_STEPS;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        nearestPlayer = GetNearestPlayer();
-        EvaluateDirection();
-        if(nearestPlayer != null)
+        if (nearestPlayer != null)
         {
+            isIdle = false;
             Shoot(nearestPlayer);
         }
-
+        else
+        {
+            nearestPlayer = GetNearestPlayer();
+        }
+        EvaluateDirection();
+    
     }
 
     
-    private void FixedUpdate()
+     void FixedUpdate()
     {
+
         EnemyMove();
     }
     void EvaluateDirection()
     {
+        Direction = Vector2.zero;
         if (nearestPlayer != null)
         {
+            Debug.Log("Nearest: " + nearestPlayer.transform.position);
             Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
             numberOfSteps = 12;
         }
         else
         {
-            numberOfSteps--;
+            isIdle = true;
+          /*  numberOfSteps--;
             if (numberOfSteps == 0)
             {
                 Direction = turn(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), this.gameObject);
                 numberOfSteps = UnityEngine.Random.Range(1, 15);
 
-            }
+            }*/
         }
+        Debug.Log("MY Direction " + Direction);
     }
     GameObject GetNearestPlayer()
     {
@@ -101,6 +112,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     {
         Rigidbody2D enemyBody = this.gameObject.GetComponent<Rigidbody2D>();
                 Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
+        Debug.Log("Move " + move);
         enemyBody.MovePosition(Boundaries.ClampPosition(enemyBody.position + move));
     }
    
@@ -108,12 +120,24 @@ public class Enemy_SearchTarget : MonoBehaviour
     {
         if (Time.time > nextShotTime)
         {
+            Animator animator = this.gameObject.GetComponent<Animator>();
+            animator.SetBool("Attacking", true);
             Projectile projectile = Instantiate(projectilePrefab);
             projectile.transform.position = transform.position;
             projectile.MovementSpeed = projectileSpeed;
             projectile.Direction = Direction;
             projectile.transform.localScale = Vector3.one * projectileSize;
             nextShotTime = Time.time + attackDelay;
+            animator.SetBool("Attacking", false);
+        }
+    }
+    public void TakeDamage(int damage)
+    {
+        hitPoints = hitPoints - damage;
+        if(hitPoints <= 0)
+        {
+            Animator anim = this.gameObject.GetComponent<Animator>();
+            anim.SetBool("Dead", true);
         }
     }
 
