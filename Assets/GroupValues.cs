@@ -8,17 +8,35 @@ public class GroupValues : MonoBehaviour
     int hearts;
     [SerializeField]
     int coins;
+
+    [SerializeField]
+    GameObject heartsPrefab;
+
+    [SerializeField]
+    float heartDistance = 0.3f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log("Hearts " + hearts);
-        if(hearts <= 0)
+
+        int count = transform.childCount;
+        for(int i = 0; i < count; ++i)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        for(int i = 0; i < hearts; ++i)
+        {
+            GameObject obj = Instantiate(heartsPrefab, transform);
+            obj.transform.Translate(Vector3.right * heartDistance * i);
+        }
+
+        if (hearts <= 0)
         {
             GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in allPlayers)
