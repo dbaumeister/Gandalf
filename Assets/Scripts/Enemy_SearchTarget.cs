@@ -24,6 +24,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     [SerializeField]
     BureaucratProjectile burProjectilePrefab;
     bool isIdle;
+    bool alreadyDead;
     
 
     public delegate void Died();
@@ -32,6 +33,8 @@ public class Enemy_SearchTarget : MonoBehaviour
     void Start()
     {
         isIdle = true;
+        alreadyDead = false;
+    
 
 
     }
@@ -135,8 +138,9 @@ public class Enemy_SearchTarget : MonoBehaviour
     public void TakeDamage(int damage)
     {
         hitPoints = hitPoints - damage;
-        if (hitPoints <= 0)
+        if (hitPoints <= 0 && !alreadyDead)
         {
+            alreadyDead = true;
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Dead", true);
 
