@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 39494173663627563}
   - component: {fileID: 39494173663627556}
   - component: {fileID: 8368615645873503147}
+  - component: {fileID: -5212935886409024643}
   m_Layer: 0
   m_Name: SmallLifeCollectable
   m_TagString: Untagged
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeModificator: 2
+--- !u!114 &-5212935886409024643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39494173663627561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe183c41d6ab6ba4a8f2ccfff58ee119, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: b74d7ebe22996dc4ab64ad753b8f4e30, type: 3}

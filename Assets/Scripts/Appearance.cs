@@ -23,11 +23,19 @@ public class Appearance : MonoBehaviour
     [SerializeField]
     Sprite[] att_right;
 
+    [SerializeField]
+    Sprite hurtSprite;
+
     int curHor, curVert;
     float nextSpriteHor, nextSpriteVert;
     float offHor, offVert;
 
     public bool attacking;
+    bool hurt;
+    float hurtTime;
+
+    [SerializeField]
+    AudioClip ouch;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +46,8 @@ public class Appearance : MonoBehaviour
         nextSpriteHor = 0f;
         offVert = 0.4f;
         offHor = 0.2f;
+
+        hurtTime = float.PositiveInfinity;
     }
 
     void SetSprite(Sprite sprite)
@@ -45,11 +55,27 @@ public class Appearance : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
+    public void Hurt()
+    {
+        AudioManager.PlaySound(ouch);
+        hurt = true;
+        hurtTime = Time.time + 2f;
+
+    }
+
 
     public void Change(Vector2 lookDirection)
     {
         transform.localScale = new Vector3(1, 1, 1);
-        if (Mathf.Abs(lookDirection.x) > Mathf.Abs(lookDirection.y))
+        if (hurt)
+        {
+            SetSprite(hurtSprite);
+            if (Time.time > hurtTime)
+            {
+                hurt = false;
+            }
+        }
+        else if (Mathf.Abs(lookDirection.x) > Mathf.Abs(lookDirection.y))
         {
             if(lookDirection.x > 0)
             {

@@ -51,7 +51,9 @@ public class BureaucratProjectile : MonoBehaviour
     {
         if (gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
+            col.gameObject.GetComponent<Appearance>().Hurt();
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
+            
         }
         killSelf();
     }

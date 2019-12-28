@@ -45,8 +45,13 @@ public class Inventory : MonoBehaviour
         }
 
         if(item || modifier)
-        {
+        {            
+            if (item.Sound)
+            {
+                AudioManager.PlaySound(item.Sound);
+            }
             Destroy(collision.collider.gameObject);
+
 
         }
     }

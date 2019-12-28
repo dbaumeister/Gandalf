@@ -178,7 +178,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a119f16abb1d45f49879e1710563d405, type: 3}
   - {fileID: 21300000, guid: a93915ba71c474947ada9da2ff25ae9d, type: 3}
   - {fileID: 21300000, guid: 887e01d9df4cc1442b9897ce02a02a2e, type: 3}
+  hurtSprite: {fileID: 21300000, guid: 28cd7359e2d748b469d19da256c59bdc, type: 3}
   attacking: 0
+  ouch: {fileID: 8300000, guid: 90852d077b3863e45a49ca36ebe9e114, type: 3}
 --- !u!114 &4930785555248026043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +261,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c0d1dcc8-f606-4a76-a281-7f918b12ad57
     m_ActionName: Gameplay/Shoot
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ae1d470e-fc6f-4eb3-a906-b55f15013925
-    m_ActionName: Gameplay/Interact
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

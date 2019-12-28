@@ -51,6 +51,8 @@ public class Level : MonoBehaviour
         AddVerticalConnection(rooms[conn], rooms[special]);
 
         rooms[start].EnterRoom(DoorPosition.West);
+
+
     }
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)

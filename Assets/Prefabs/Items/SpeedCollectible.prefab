@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 122ebfaa6f1df754b9f43664e542139f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 9399f0b0e1ef2cc40b417d762e1b98ce, type: 3}

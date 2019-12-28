@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1713024307132584600}
   - component: {fileID: 5650718750144707956}
   m_Layer: 0
-  m_Name: FireballCollectable 1
+  m_Name: FireballCollectable
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,3 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6c8c11117543f4eac6507bd12300ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sound: {fileID: 8300000, guid: 9cb22c905c867cc40925451041203f9a, type: 3}
