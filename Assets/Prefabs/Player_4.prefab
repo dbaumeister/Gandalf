@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4930785555248026044}
   - component: {fileID: 4930785555248026045}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Player_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 869882107
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 45feef03a79c9624587fe067beebc9a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70ef942e7d80375439206d2a56756725, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,18 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b651fce8acd754291d3721f6118aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 21300000, guid: 45feef03a79c9624587fe067beebc9a0, type: 3}
-  down: {fileID: 21300000, guid: c1f2ebbc03a971842817479e24015be5, type: 3}
+  up: {fileID: 21300000, guid: 06587b58594507f4385afb744557f3e9, type: 3}
+  down: {fileID: 21300000, guid: 70ef942e7d80375439206d2a56756725, type: 3}
   right:
-  - {fileID: 21300000, guid: 4acac8658979aef4abcda73af6f5c037, type: 3}
-  - {fileID: 21300000, guid: bdf1cb5672bd6ef4395cd3155fd6993c, type: 3}
-  - {fileID: 21300000, guid: 723899dcadaff0744bd2f32ecb88259a, type: 3}
-  att_up: {fileID: 21300000, guid: 9d5fb8c16d765bf46a0b6125a4a9db63, type: 3}
-  att_down: {fileID: 21300000, guid: b1ebe95092e7d934dbe011f5fe30b85f, type: 3}
+  - {fileID: 21300000, guid: d494f09a605adf241af96bf5f022780a, type: 3}
+  - {fileID: 21300000, guid: a8e6b2ef26084094182df7cc9e423e8b, type: 3}
+  - {fileID: 21300000, guid: f44a1600bf77dde46ab965f4d930f55e, type: 3}
+  att_up: {fileID: 21300000, guid: 03c95a32b131f0142b3d2a0756705f7e, type: 3}
+  att_down: {fileID: 21300000, guid: d38fdb00b2412fd45b1e2ebc8f46468b, type: 3}
   att_right:
-  - {fileID: 21300000, guid: f4aa455f6b1eb0b48b36cf6da88b5a73, type: 3}
-  - {fileID: 21300000, guid: 2592a9ebe9039a14283d8729b6b11e76, type: 3}
-  - {fileID: 21300000, guid: cd9d4e1d4481d6b4d9fb20abff7a4f8e, type: 3}
+  - {fileID: 21300000, guid: 0d1e8403d978fa34bbfa7acef25b40ec, type: 3}
+  - {fileID: 21300000, guid: c43f1da9a4c44684296c37a16cfea60e, type: 3}
+  - {fileID: 21300000, guid: 7724cb31f2ec1a643aa35e683d5a5cdb, type: 3}
+  attacking: 0
 --- !u!114 &4930785555248026043
 MonoBehaviour:
   m_ObjectHideFlags: 0
