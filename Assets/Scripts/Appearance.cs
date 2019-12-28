@@ -29,12 +29,9 @@ public class Appearance : MonoBehaviour
 
     public bool attacking;
 
-    SpriteRenderer spriteRenderer;
-
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
         curHor = 0;
         curVert = 0;
         nextSpriteVert = 0f;
@@ -45,7 +42,7 @@ public class Appearance : MonoBehaviour
 
     void SetSprite(Sprite sprite)
     {
-        spriteRenderer.sprite = sprite;
+        GetComponent<SpriteRenderer>().sprite = sprite;
     }
 
 

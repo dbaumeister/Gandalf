@@ -34,6 +34,13 @@ public class Inventory : MonoBehaviour
                 ModifyProjectile mod = item.GetComponent<ModifyProjectile>();
                 weapon.projectilePrefab = mod.projectile;
             }
+
+            ModifyLife modifier = item.GetComponent<ModifyLife>();
+            if(modifier != null)
+            {
+                GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
+
+            }
             items.Add(item);
             Destroy(collision.collider.gameObject);
         }

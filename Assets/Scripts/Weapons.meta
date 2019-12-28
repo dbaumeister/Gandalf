@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Weapons.meta
 guid: 06e5d5a0a708e914497c560e13432cc8
 folderAsset: yes
 DefaultImporter:
+=======
+guid: 2baeb7b3633f8cb468768a65b1f90f7c
+PrefabImporter:
+>>>>>>> 3f6a35596d1dcfe68acf4b90ef3a3dd3178b0630:Assets/Prefabs/Almanach.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
