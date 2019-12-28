@@ -7,13 +7,13 @@ public class EnemyWave : MonoBehaviour
     [SerializeField]
     IList<GameObject> enemyPrefabs;
 
-    int remainingEnemies = 5;
+    int remainingEnemies = 1;
 
     public int RemainingEnemies { get => remainingEnemies; set => remainingEnemies = value; }
 
-    private void Start()
+    private void Awake()
     {
-        RemainingEnemies = Random.Range(2, 4);
+        RemainingEnemies = Random.Range(1, 2);
     }
 
 }

@@ -99,7 +99,7 @@ public class Level : MonoBehaviour
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         if (type == RoomType.Fight)
         {
-            int numWaves = Random.Range(1, 3);
+            int numWaves = Random.Range(1, 1);
             for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         else if (type == RoomType.Boss)
