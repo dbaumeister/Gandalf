@@ -1,6 +1,5 @@
-﻿using System;
+﻿
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_SearchTarget : MonoBehaviour
@@ -10,15 +9,11 @@ public class Enemy_SearchTarget : MonoBehaviour
     [SerializeField]
     GameObject nearestPlayer;
     [SerializeField]
-    float speedEnemy;
-    [SerializeField]
     float maxDistance;
     Vector2 direction;
     public Vector2 Direction { get => direction; set => direction = value; }
-
-    int numberOfSteps;
     [SerializeField]
-    int movementSpeed;
+    float movementSpeed;
     float nextShotTime;
     [SerializeField]
     float projectileSpeed;
@@ -27,19 +22,17 @@ public class Enemy_SearchTarget : MonoBehaviour
     [SerializeField]
     float attackDelay;
     [SerializeField]
-    Projectile projectilePrefab;
+    BureaucratProjectile burProjectilePrefab;
     bool isIdle;
-    private int MAX_STEPS = 12;
+    
 
     public delegate void Died();
     public event Died DieCallback;
 
-    // Start is called before the first frame update
     void Start()
     {
         isIdle = true;
-        numberOfSteps = MAX_STEPS;
-        //collider = this.gameObject.GetComponent<BoxCollider2D>();
+
 
     }
 
@@ -51,10 +44,7 @@ public class Enemy_SearchTarget : MonoBehaviour
             isIdle = false;
             Shoot(nearestPlayer);
         }
-        else
-        {
-            nearestPlayer = GetNearestPlayer();
-        }
+        nearestPlayer = GetNearestPlayer();
         EvaluateDirection();
 
 
@@ -85,18 +75,10 @@ public class Enemy_SearchTarget : MonoBehaviour
             {
                 anim.SetBool("WalkingUpwards", false);
             }
-            numberOfSteps = 12;
         }
         else
         {
             isIdle = true;
-            /*  numberOfSteps--;
-              if (numberOfSteps == 0)
-              {
-                  Direction = turn(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), this.gameObject);
-                  numberOfSteps = UnityEngine.Random.Range(1, 15);
-
-              }*/
         }
         
     }
@@ -141,7 +123,7 @@ public class Enemy_SearchTarget : MonoBehaviour
         {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.SetBool("Attacking", true);
-            Projectile projectile = Instantiate(projectilePrefab);
+            BureaucratProjectile projectile = Instantiate(burProjectilePrefab);
             projectile.transform.position = transform.position;
             projectile.MovementSpeed = projectileSpeed;
             projectile.Direction = Direction;
