@@ -107,10 +107,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2744067281021100374, guid: 8ffa449724c6699469b0b7897023bf1e,
+        type: 3}
+      propertyPath: permanent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2744067281021100375, guid: 8ffa449724c6699469b0b7897023bf1e,
         type: 3}
       propertyPath: attackDelay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2744067281021100375, guid: 8ffa449724c6699469b0b7897023bf1e,
         type: 3}

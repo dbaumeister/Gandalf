@@ -36,10 +36,10 @@ public class Inventory : MonoBehaviour
             }
 
             ModifyLife modifier = item.GetComponent<ModifyLife>();
-            if(modifier != null)
+            if(modifier)
             {
                 GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
-
+                Destroy(collision.collider.gameObject);
             }
             items.Add(item);
             Destroy(collision.collider.gameObject);
