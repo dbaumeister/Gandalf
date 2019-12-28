@@ -36,20 +36,24 @@ public class Projectile : MonoBehaviour
     {
         Vector2 move = MovementSpeed * Direction * Time.fixedDeltaTime;
         rigidbody.MovePosition(rigidbody.position + move);
+        if(rigidbody.position.x > 1000 || rigidbody.position.x < -1000 || rigidbody.position.y > 1000 || rigidbody.position.y < -1000)
+        {
+            killSelf();
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (gameObject.tag == "PlayerProjectile" && col.collider.tag == "Enemy") {
-            killSelf(); }
+        if (gameObject.tag == "Projectile" && col.collider.tag == "Enemy") 
+        {
+            Debug.Log("Hit ");
+        }
         else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
             Debug.Log("Hit one Heart");
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
-           
-            killSelf();
-        }    
-      
+        }
+        killSelf();
     
     }
     

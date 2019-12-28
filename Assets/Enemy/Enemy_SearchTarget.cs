@@ -15,6 +15,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     float maxDistance;
     Vector2 direction;
     public Vector2 Direction { get => direction; set => direction = value; }
+
     int numberOfSteps;
     [SerializeField]
     int movementSpeed;
@@ -29,6 +30,9 @@ public class Enemy_SearchTarget : MonoBehaviour
     Projectile projectilePrefab;
     bool isIdle;
     private int MAX_STEPS = 12;
+
+    public delegate void Died();
+    public event Died DieCallback;
 
     // Start is called before the first frame update
     void Start()
@@ -161,25 +165,35 @@ public class Enemy_SearchTarget : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Collider2D playerCollider = null;
-        if (col.collider.tag == "PlayerProjectile")
+        if (col.collider.tag == "Projectile")
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Hit", true);
             playerCollider = col.collider;
             int damage = playerCollider.GetComponent<Projectile>().getDamage();
             TakeDamage(damage);
-            anim.SetBool("Hit", false);
+            StartCoroutine(DelayedContin());
+            
         }
     }
 
     IEnumerator DelayedRemove()
     {
         yield return new WaitForSeconds(0.5f);
+        if(DieCallback != null)
+        {
+            DieCallback();
+        }
         Destroy(this.gameObject);
 
 
     }
-
+    IEnumerator DelayedContin()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Animator anim = this.gameObject.GetComponent<Animator>();
+        anim.SetBool("Hit", false);
+    }
 }
 
 

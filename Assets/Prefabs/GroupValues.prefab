@@ -45,3 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hearts: 5
   coins: 0
+  heartsPrefab: {fileID: 8526414004643875765, guid: 2eaaf1ccb92519d48902248c36642d5f,
+    type: 3}
+  heartDistance: 0.3

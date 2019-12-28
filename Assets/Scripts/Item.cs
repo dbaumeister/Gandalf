@@ -8,6 +8,9 @@ public class Item : MonoBehaviour
     [SerializeField]
     Attributes attributes;
 
+    [SerializeField]
+    bool permanent = true;
+
     private void Start()
     {
         attributes = GetComponent<Attributes>();

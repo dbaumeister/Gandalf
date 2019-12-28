@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject playerPrefab;
+    GameObject[] playerPrefab;
 
     Dictionary<InputDevice, PlayerInput> inputMap;
     IList<PlayerInput> removedPlayers;
@@ -17,9 +17,12 @@ public class PlayerSpawner : MonoBehaviour
         InputSystem.onDeviceChange += OnDeviceChange;
         inputMap = new Dictionary<InputDevice, PlayerInput>();
         removedPlayers = new List<PlayerInput>();
+    }
 
+    private void Start()
+    {
         // Check all devices on the system
-        foreach(InputDevice device in InputSystem.devices)
+        foreach (InputDevice device in InputSystem.devices)
         {
             SpawnPlayer(device);
         }
@@ -69,7 +72,7 @@ public class PlayerSpawner : MonoBehaviour
             }
             else
             {
-                player = PlayerInput.Instantiate(playerPrefab, pairWithDevice: device);
+                player = PlayerInput.Instantiate(playerPrefab[inputMap.Count], pairWithDevice : device);
             }
 
             inputMap.Add(device, player);

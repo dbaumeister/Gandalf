@@ -19,10 +19,10 @@ public class Door : MonoBehaviour
     Room to = null;
 
     [SerializeField]
-    Sprite closedSprite;
+    Sprite openedSprite;
 
     [SerializeField]
-    Sprite openedSprite;
+    Sprite closedSprite;
 
     [SerializeField]
     bool isOpen = false;

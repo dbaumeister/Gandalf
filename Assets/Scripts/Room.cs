@@ -5,19 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    Door northDoor;
-
-    [SerializeField]
-    Door southDoor;
-
-    [SerializeField]
-    Door eastDoor;
-
-    [SerializeField]
-    Door westDoor;
-
-    [SerializeField]
-    ObstacleLayout layout;
+    RoomSpawner layout;
 
     [SerializeField]
     RoomType type;
@@ -32,15 +20,18 @@ public class Room : MonoBehaviour
     [SerializeField]
     RoomStates currentState = RoomStates.Initial;
 
+    [SerializeField]
+    IList<Transform> spawnPoints;
+
+    [SerializeField]
+    Enemy_SearchTarget[] enemyPrefabs;
+
     public RoomType Type { get => type; set => type = value; }
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
     public RoomStates CurrentState { get => currentState; set => SetState(value); }
-    public Door NorthDoor { get => northDoor; set => northDoor = value; }
-    public Door SouthDoor { get => southDoor; set => southDoor = value; }
-    public Door EastDoor { get => eastDoor; set => eastDoor = value; }
-    public Door WestDoor { get => westDoor; set => westDoor = value; }
-    public ObstacleLayout Layout { get => layout; set => layout = value; }
+    public RoomSpawner Layout { get => layout; set => layout = value; }
+    public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
 
     void SetState(RoomStates state)
     {
@@ -70,35 +61,64 @@ public class Room : MonoBehaviour
         }
     }
 
+    public Door NorthDoor()
+    {
+        return layout.NorthDoor();
+    }
+
+    public Door SouthDoor()
+    {
+        return layout.SouthDoor();
+    }
+
+    public Door EastDoor()
+    {
+        return layout.EastDoor();
+    }
+
+    public Door WestDoor()
+    {
+        return layout.WestDoor();
+    }
+
     void FinishedRoom()
     {
         Debug.Log("TODO: Finished Room");
-        northDoor.Open();
-        southDoor.Open();
-        eastDoor.Open();
-        westDoor.Open();
+        NorthDoor().Open();
+        SouthDoor().Open();
+        EastDoor().Open();
+        WestDoor().Open();
     }
 
     void EnterFight()
     {
-        Debug.Log("TODO: Entered Fight");
-
-        while(enemyWaves[currentWave].RemainingEnemies > 0)
+        if(enemyWaves[currentWave].RemainingEnemies <= 0)
         {
-            Debug.Log("Killed Enemy");
-            enemyWaves[currentWave].RemainingEnemies--;
+            currentWave++;
+            CurrentState = RoomStates.SpawnEnemies;
         }
+    }
 
-        Debug.Log("Killed All Enemies");
-        currentWave++;
-        CurrentState = RoomStates.SpawnEnemies;
+    void OnEnemyKill()
+    {
+        enemyWaves[currentWave].RemainingEnemies--;
+        CurrentState = RoomStates.FightEnemies;
     }
 
     void SpawnEnemies()
     {
-        if(currentWave < enemyWaves.Count)
+        if(currentWave < enemyWaves.Count && SpawnPoints.Count > 0)
         {
-            Debug.Log("TODO: Spawn Enemies");
+            // Spawn Enemies
+            EnemyWave enemyWave = enemyWaves[currentWave];
+            for(int i = 0; i < enemyWave.RemainingEnemies; ++i)
+            {
+                int spawnPoint = Random.Range(0, SpawnPoints.Count);
+                int enemy = Random.Range(0, enemyPrefabs.Length);
+                Enemy_SearchTarget target = Instantiate(enemyPrefabs[enemy], spawnPoints[spawnPoint].position, Quaternion.identity, transform);
+                target.DieCallback += OnEnemyKill;
+            }
+
             CurrentState = RoomStates.FightEnemies;
         }
         else
@@ -119,13 +139,13 @@ public class Room : MonoBehaviour
         switch(pos)
         {
             case DoorPosition.East:
-                return EastDoor;
+                return EastDoor();
             case DoorPosition.West:
-                return WestDoor;
+                return WestDoor();
             case DoorPosition.North:
-                return NorthDoor;
+                return NorthDoor();
             case DoorPosition.South:
-                return SouthDoor;
+                return SouthDoor();
         }
         return null;
     }
@@ -145,10 +165,15 @@ public class Room : MonoBehaviour
             players[i].transform.position = child.position;
         }
 
-        northDoor.Close();
-        southDoor.Close();
-        eastDoor.Close();
-        westDoor.Close();
+        foreach(EnemyWave wave in enemyWaves)
+        {
+            wave.RemainingEnemies = Random.Range(2, 5);
+        }
+
+        NorthDoor().Close();
+        SouthDoor().Close();
+        EastDoor().Close();
+        WestDoor().Close();
 
         CurrentState = RoomStates.SpawnEnemies;
     }
