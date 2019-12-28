@@ -103,8 +103,11 @@ public class Room : MonoBehaviour
 
     void OnEnemyKill()
     {
-        enemyWaves[currentWave].RemainingEnemies--;
-        CurrentState = RoomStates.FightEnemies;
+        if(CurrentState == RoomStates.FightEnemies)
+        {
+            enemyWaves[currentWave].RemainingEnemies--;
+            CurrentState = RoomStates.FightEnemies;
+        }
     }
 
     void SpawnEnemies()
@@ -172,11 +175,6 @@ public class Room : MonoBehaviour
         {
             Transform child = door.transform.GetChild(i % maxCount);
             players[i].transform.position = child.position;
-        }
-
-        foreach(EnemyWave wave in enemyWaves)
-        {
-            wave.RemainingEnemies = Random.Range(2, 5);
         }
 
         NorthDoor().Close();

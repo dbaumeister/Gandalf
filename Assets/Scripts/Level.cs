@@ -103,12 +103,22 @@ public class Level : MonoBehaviour
         if (type == RoomType.Fight)
         {
             int numWaves = Random.Range(1, 3);
-            for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
+            for (int j = 0; j < numWaves; ++j)
+            {
+                EnemyWave wave = new EnemyWave();
+                wave.RemainingEnemies = Random.Range(2, 5);
+                enemyWaves.Add(wave);
+            }
         }
         else if (type == RoomType.Boss)
         {
             int numWaves = Random.Range(4, 6);
-            for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
+            for (int j = 0; j < numWaves; ++j)
+            {
+                EnemyWave wave = new EnemyWave();
+                wave.RemainingEnemies = Random.Range(4, 7);
+                enemyWaves.Add(wave);
+            }
         }
         return enemyWaves;
     }
