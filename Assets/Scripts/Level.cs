@@ -16,10 +16,15 @@ public class Level : MonoBehaviour
     [SerializeField]
     GameObject[] lootTable;
 
+    [SerializeField]
+    SplashScreen splashScreen;
+
     // Start is called before the first frame update
     void Start()
     {
         rooms = new List<Room>();
+
+        GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().OnPlayersDied += OnPlayersDied;
 
         // Create all rooms
         int start = AddRoom(RoomType.Start);
@@ -93,8 +98,35 @@ public class Level : MonoBehaviour
         room.name = "Room (" + type + ")";
         room.Layout.Initialize(type);
         room.SpawnPoints = room.Layout.GetSpawnPoints();
+
+        room.OnRoomFinished += OnRoomFinished;
+
         rooms.Add(room);
         return rooms.Count - 1;
+    }
+
+    void OnRoomFinished()
+    {
+        bool allFinished = true;
+        foreach(Room room in rooms)
+        {
+            bool hasNecessaryType = room.Type == RoomType.Fight || room.Type == RoomType.Boss;
+            if (hasNecessaryType && !room.RoomDone)
+            {
+                allFinished = false;
+                break;
+            }
+        }
+
+        if(allFinished)
+        {
+            splashScreen.ShowSuccess();
+        }
+    }
+
+    void OnPlayersDied()
+    {
+        splashScreen.ShowFailure();
     }
 
     IList<EnemyWave> CreateWaves(RoomType type)

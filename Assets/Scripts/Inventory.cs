@@ -35,10 +35,20 @@ public class Inventory : MonoBehaviour
                 weapon.projectilePrefab = mod.projectile;
             }
             items.Add(item);
-            Destroy(collision.collider.gameObject);
         }
 
 
+        ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
+        if (modifier)
+        {
+            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
+        }
+
+        if(item || modifier)
+        {
+            Destroy(collision.collider.gameObject);
+
+        }
     }
 
     private void Update()
@@ -46,7 +56,7 @@ public class Inventory : MonoBehaviour
         attributes.Overwrite(defaultAttributes);
         foreach(Item item in items)
         {
-            item.Apply(attributes);
+            attributes = item.Apply(attributes);
         }
     }
 }

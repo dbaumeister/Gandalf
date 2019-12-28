@@ -15,10 +15,8 @@ public class GroupValues : MonoBehaviour
     [SerializeField]
     float heartDistance = 0.3f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    public delegate void PlayersDied();
+    public event PlayersDied OnPlayersDied;
 
     // Update is called once per frame
     void Update()
@@ -39,7 +37,11 @@ public class GroupValues : MonoBehaviour
             GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
             foreach (GameObject player in allPlayers)
             {
-                
+                if(OnPlayersDied != null)
+                {
+                    OnPlayersDied();
+                }
+
                 Destroy(player);
             }
         }
