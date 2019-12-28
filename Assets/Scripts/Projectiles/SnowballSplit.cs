@@ -10,7 +10,7 @@ public class SnowballSplit : MonoBehaviour
 
     [SerializeField]
     Vector2[] directions;
-    float defaultSpeed = 0;
+    float defaultSpeed = 2;
 
     public void Split()
     {
