@@ -33,6 +33,8 @@ public class Room : MonoBehaviour
     public RoomSpawner Layout { get => layout; set => layout = value; }
     public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
 
+    bool spawnedLoot = false;
+
     void SetState(RoomStates state)
     {
         RoomStates oldState = currentState;
@@ -101,8 +103,11 @@ public class Room : MonoBehaviour
 
     void OnEnemyKill()
     {
-        enemyWaves[currentWave].RemainingEnemies--;
-        CurrentState = RoomStates.FightEnemies;
+        if(CurrentState == RoomStates.FightEnemies)
+        {
+            enemyWaves[currentWave].RemainingEnemies--;
+            CurrentState = RoomStates.FightEnemies;
+        }
     }
 
     void SpawnEnemies()
@@ -129,8 +134,15 @@ public class Room : MonoBehaviour
 
     void SpawnLoot()
     {
-        Debug.Log("TODO: Spawn Loot");
-
+        if(!spawnedLoot)
+        {
+            foreach (GameObject obj in Loot)
+            {
+                int spawnPoint = Random.Range(0, SpawnPoints.Count);
+                Instantiate(obj, spawnPoints[spawnPoint].position, Quaternion.identity, transform);
+            }
+            spawnedLoot = true;
+        }
         CurrentState = RoomStates.Done;
     }
 
@@ -163,11 +175,6 @@ public class Room : MonoBehaviour
         {
             Transform child = door.transform.GetChild(i % maxCount);
             players[i].transform.position = child.position;
-        }
-
-        foreach(EnemyWave wave in enemyWaves)
-        {
-            wave.RemainingEnemies = Random.Range(2, 5);
         }
 
         NorthDoor().Close();
