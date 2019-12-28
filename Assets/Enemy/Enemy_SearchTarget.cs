@@ -165,7 +165,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Collider2D playerCollider = null;
-        if (col.collider.tag == "PlayerProjectile")
+        if (col.collider.tag == "Projectile")
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Hit", true);

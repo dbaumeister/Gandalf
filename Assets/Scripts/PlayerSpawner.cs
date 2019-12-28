@@ -72,7 +72,7 @@ public class PlayerSpawner : MonoBehaviour
             }
             else
             {
-                player = Instantiate(playerPrefab[inputMap.Count]);
+                player = PlayerInput.Instantiate(playerPrefab[inputMap.Count], pairWithDevice : device);
             }
 
             inputMap.Add(device, player);
