@@ -44,7 +44,13 @@ public class Inventory : MonoBehaviour
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
         }
 
-        if(item || modifier)
+        DoomCollectable doom = collision.collider.GetComponent<DoomCollectable>();
+        if(doom)
+        {
+            doom.Split();
+        }
+
+        if(item || modifier || doom)
         {
             Destroy(collision.collider.gameObject);
 
