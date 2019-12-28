@@ -28,14 +28,6 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "ae1d470e-fc6f-4eb3-a906-b55f15013925",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -206,23 +198,12 @@
                 },
                 {
                     "name": "",
-                    "id": "253a5b69-7547-48b4-9dee-edf9da61a9bd",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "fc100cd9-67f9-43c9-afa6-f22f564be71c",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "066b5d8d-98b9-4d18-88f6-1232a32ac04b",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
