@@ -37,8 +37,6 @@ public class Inventory : MonoBehaviour
             items.Add(item);
             Destroy(collision.collider.gameObject);
         }
-
-
     }
 
     private void Update()
@@ -46,7 +44,7 @@ public class Inventory : MonoBehaviour
         attributes.Overwrite(defaultAttributes);
         foreach(Item item in items)
         {
-            item.Apply(attributes);
+            attributes = item.Apply(attributes);
         }
     }
 }
