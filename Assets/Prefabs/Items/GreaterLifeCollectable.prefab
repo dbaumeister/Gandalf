@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 39494173663627557}
   - component: {fileID: 39494173663627563}
   - component: {fileID: 39494173663627556}
-  - component: {fileID: 4462132722640309211}
-  - component: {fileID: 4462132722640309210}
   - component: {fileID: 8368615645873503147}
   m_Layer: 0
   m_Name: GreaterLifeCollectable
@@ -30,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39494173663627561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 0}
+  m_LocalPosition: {x: 0.0248, y: -0.0319, z: 0}
+  m_LocalScale: {x: 3.1550999, y: 2.8008, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -98,7 +96,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.040472373, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +107,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.6}
+  m_Size: {x: 0.23905525, y: 0.32}
   m_EdgeRadius: 0
 --- !u!50 &39494173663627556
 Rigidbody2D:
@@ -132,39 +130,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4462132722640309211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39494173663627561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99a4973ae50b4234a9a0230059d703fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributes: {fileID: 0}
-  permanent: 0
---- !u!114 &4462132722640309210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 39494173663627561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5ad75d147c752a42aa060dd73a89a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 0
-  attackDelay: 0
-  projectileSpeed: 0
-  projectileRange: 0
-  projectileSize: 0
-  projectileCount: 0
-  weaponDamage: 0
 --- !u!114 &8368615645873503147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,4 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86864dc11ee264f41b3f4cdb68604671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeModificator: 10
+  lifeModificator: 5
