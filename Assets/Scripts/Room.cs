@@ -26,14 +26,19 @@ public class Room : MonoBehaviour
     [SerializeField]
     Enemy_SearchTarget[] enemyPrefabs;
 
+    bool spawnedLoot = false;
+    bool roomDone = false;
+
+    public delegate void RoomFinished();
+    public event RoomFinished OnRoomFinished;
+
     public RoomType Type { get => type; set => type = value; }
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
     public RoomStates CurrentState { get => currentState; set => SetState(value); }
     public RoomSpawner Layout { get => layout; set => layout = value; }
     public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
-
-    bool spawnedLoot = false;
+    public bool RoomDone { get => roomDone; set => roomDone = value; }
 
     void SetState(RoomStates state)
     {
@@ -85,11 +90,16 @@ public class Room : MonoBehaviour
 
     void FinishedRoom()
     {
-        Debug.Log("TODO: Finished Room");
         NorthDoor().Open();
         SouthDoor().Open();
         EastDoor().Open();
         WestDoor().Open();
+
+        RoomDone = true;
+        if (OnRoomFinished != null)
+        {
+            OnRoomFinished();
+        }
     }
 
     void EnterFight()

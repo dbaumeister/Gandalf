@@ -6,6 +6,15 @@ TagManager:
   tags:
   - Boundaries
   - Projectile
+  - EnemyProjectile
+  - Enemy
+  - WestDoor
+  - NorthDoor
+  - SouthDoor
+  - EastDoor
+  - Level
+  - GroupValues
+  - AudioManager
   layers:
   - Default
   - TransparentFX

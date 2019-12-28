@@ -1,5 +1,24 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8411666004590126196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6277178756097391992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fbd7e4eea794fa49812db60ca94e252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6277178756097391972, guid: 13a3ab95a5cd3d943bcfae739c57164d,
+    type: 3}
+  directions:
+  - {x: 1, y: 0}
+  - {x: 0, y: 1}
+  - {x: -1, y: 0}
+  - {x: 0, y: -1}
 --- !u!1001 &69988299838670072
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18,6 +37,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0e89e6459f4efa54eb063c42578097fb,
         type: 3}
+    - target: {fileID: 6333645674109827458, guid: 49e47477f1eaf4e438a16193f3f70a03,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6333645674109827459, guid: 49e47477f1eaf4e438a16193f3f70a03,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -80,3 +104,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49e47477f1eaf4e438a16193f3f70a03, type: 3}
+--- !u!1 &6277178756097391992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6333645674109827456, guid: 49e47477f1eaf4e438a16193f3f70a03,
+    type: 3}
+  m_PrefabInstance: {fileID: 69988299838670072}
+  m_PrefabAsset: {fileID: 0}

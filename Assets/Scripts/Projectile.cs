@@ -46,11 +46,14 @@ public class Projectile : MonoBehaviour
     {
         if (gameObject.tag == "Projectile" && col.collider.tag == "Enemy") 
         {
-            Debug.Log("Hit ");
+            SnowballSplit split = gameObject.GetComponent<SnowballSplit>();
+            if (split)
+            {
+                split.Split();
+            }
         }
         else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
-            Debug.Log("Hit one Heart");
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
         }
         killSelf();
