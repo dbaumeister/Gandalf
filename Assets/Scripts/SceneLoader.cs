@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+
+    [SerializeField]
+    GameObject loadingScreen;
+
+    string sceneName = "Level";
+
     // Start is called before the first frame update
     void Start()
     {
-        LoadScene("SampleScene");
+        LoadScene(sceneName);
     }
 
     // Update is called once per frame
@@ -16,13 +22,14 @@ public class SceneLoader : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            UnloadScene("SampleScene");
-            LoadScene("SampleScene");
+            UnloadScene(sceneName);
+            LoadScene(sceneName);
         }
     }
 
     void UnloadScene(string name)
     {
+        loadingScreen.SetActive(true);
         Scene scene = SceneManager.GetSceneByName(name);
         AsyncOperation operation = SceneManager.UnloadSceneAsync(scene);
         operation.completed += SceneUnloadCompleted;
@@ -30,7 +37,7 @@ public class SceneLoader : MonoBehaviour
 
     private void SceneUnloadCompleted(AsyncOperation obj)
     {
-        Debug.Log("Scene Unloaded");
+        // Nothing
     }
 
     void LoadScene(string name)
@@ -41,6 +48,8 @@ public class SceneLoader : MonoBehaviour
 
     private void SceneLoadCompleted(AsyncOperation obj)
     {
-        Debug.Log("Scene Loaded");
+        Scene scene = SceneManager.GetSceneByName(sceneName);
+        SceneManager.SetActiveScene(scene);
+        loadingScreen.SetActive(false);
     }
 }

@@ -8,10 +8,10 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField]
     Vector2 direction;
-
     [SerializeField]
     float movementSpeed;
-
+    [SerializeField]
+    int damage;
     public Vector2 Direction { get => direction; set => direction = SanitizeDirection(value); }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
 
@@ -36,11 +36,33 @@ public class Projectile : MonoBehaviour
     {
         Vector2 move = MovementSpeed * Direction * Time.fixedDeltaTime;
         rigidbody.MovePosition(rigidbody.position + move);
-
-        Vector3 pos = Boundaries.ClampPosition(rigidbody.position);
-        if (pos.x != rigidbody.position.x || pos.y != rigidbody.position.y)
+        if(rigidbody.position.x > 1000 || rigidbody.position.x < -1000 || rigidbody.position.y > 1000 || rigidbody.position.y < -1000)
         {
-            Destroy(gameObject);
+            killSelf();
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (gameObject.tag == "Projectile" && col.collider.tag == "Enemy") 
+        {
+            Debug.Log("Hit ");
+        }
+        else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
+        {
+            Debug.Log("Hit one Heart");
+            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
+        }
+        killSelf();
+    
+    }
+    
+    public void killSelf()
+    {
+        Destroy(this.gameObject);
+    }
+    public int getDamage()
+    {
+        return damage;
     }
 }

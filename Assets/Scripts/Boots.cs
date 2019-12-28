@@ -32,6 +32,6 @@ public class Boots : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 move = attributes.MovementSpeed * Direction * Time.fixedDeltaTime;
-        rigidbody.MovePosition(Boundaries.ClampPosition(rigidbody.position + move));
+        rigidbody.MovePosition(rigidbody.position + move);
     }
 }

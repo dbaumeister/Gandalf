@@ -6,20 +6,23 @@ using UnityEngine.InputSystem;
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField]
-    GameObject playerPrefab;
+    GameObject[] playerPrefab;
 
-    Dictionary<InputDevice, GameObject> inputMap;
-    IList<GameObject> removedPlayers;
+    Dictionary<InputDevice, PlayerInput> inputMap;
+    IList<PlayerInput> removedPlayers;
 
     // Start is called before the first frame update
     void Awake()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
-        inputMap = new Dictionary<InputDevice, GameObject>();
-        removedPlayers = new List<GameObject>();
+        inputMap = new Dictionary<InputDevice, PlayerInput>();
+        removedPlayers = new List<PlayerInput>();
+    }
 
+    private void Start()
+    {
         // Check all devices on the system
-        foreach(InputDevice device in InputSystem.devices)
+        foreach (InputDevice device in InputSystem.devices)
         {
             SpawnPlayer(device);
         }
@@ -49,9 +52,9 @@ public class PlayerSpawner : MonoBehaviour
     {
         if(inputMap.ContainsKey(device))
         {
-            GameObject player = inputMap[device];
+            PlayerInput player = inputMap[device];
             removedPlayers.Add(player);
-            player.SetActive(false);
+            player.gameObject.SetActive(false);
             inputMap.Remove(device);
         }
     }
@@ -60,21 +63,19 @@ public class PlayerSpawner : MonoBehaviour
     {
         if(!inputMap.ContainsKey(device))
         {
-            GameObject player;
+            PlayerInput player;
             if (removedPlayers.Count > 0)
             {
                 player = removedPlayers[removedPlayers.Count - 1];
                 removedPlayers.RemoveAt(removedPlayers.Count - 1);
-                player.SetActive(true);
+                player.gameObject.SetActive(true);
             }
             else
             {
-                player = Instantiate(playerPrefab);
+                player = PlayerInput.Instantiate(playerPrefab[inputMap.Count], pairWithDevice : device);
             }
 
-            PlayerInput input = player.GetComponent<PlayerInput>();
             inputMap.Add(device, player);
         }
     }
-
 }
