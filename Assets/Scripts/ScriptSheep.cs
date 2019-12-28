@@ -1,60 +1,60 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy_SearchTarget : MonoBehaviour
+public class ScriptSheep : MonoBehaviour
+
 {
     [SerializeField]
     int hitPoints;
     [SerializeField]
     GameObject nearestPlayer;
     [SerializeField]
-    float speedEnemy;
-    [SerializeField]
     float maxDistance;
     Vector2 direction;
-    public Vector2 Direction { get => direction; set => direction = value; }
-
-    int numberOfSteps;
+    public Vector2 Direction { get => direction; set => direction = value; }    int numberOfSteps;
     [SerializeField]
     int movementSpeed;
+    int attackSpeed;
     float nextShotTime;
-    [SerializeField]
-    float projectileSpeed;
-    [SerializeField]
-    float projectileSize;
     [SerializeField]
     float attackDelay;
     [SerializeField]
-    Projectile projectilePrefab;
+    int damageDealt;
     bool isIdle;
-    private int MAX_STEPS = 12;
+    bool isAttacking;
 
-    public delegate void Died();
-    public event Died DieCallback;
 
     // Start is called before the first frame update
     void Start()
     {
         isIdle = true;
-        numberOfSteps = MAX_STEPS;
-        //collider = this.gameObject.GetComponent<BoxCollider2D>();
+        isAttacking = false;
+        attackSpeed = 3 * movementSpeed;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (nearestPlayer != null)
+        /*if (nearestPlayer != null)
         {
             isIdle = false;
-            Shoot(nearestPlayer);
+
+            Direction = Vector2.zero;
+            Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
+
+            if (direction.x+direction.y < 15.0f)
+            {
+                Attack(nearestPlayer);
+            }
+          
         }
         else
         {
             nearestPlayer = GetNearestPlayer();
-        }
+        }*/
         EvaluateDirection();
 
 
@@ -68,10 +68,12 @@ public class Enemy_SearchTarget : MonoBehaviour
     }
     void EvaluateDirection()
     {
-        Direction = Vector2.zero;
-        if (nearestPlayer != null)
+       Vector2 Direction = Vector2.zero;
+        Direction.x = Random.Range(-1, 2)*5+1;
+        Direction.y = Random.Range(-1, 2)*5+1;
+        /*if (nearestPlayer != null)
         {
-        
+
             Direction = nearestPlayer.transform.position - this.gameObject.transform.position;
 
 
@@ -84,12 +86,12 @@ public class Enemy_SearchTarget : MonoBehaviour
             else if (anim.GetBool("WalkingUpwards"))
             {
                 anim.SetBool("WalkingUpwards", false);
-            }
-            numberOfSteps = 12;
-        }
-        else
-        {
-            isIdle = true;
+            }*/
+            //numberOfSteps = 12;
+        //}
+       // else
+      //  {
+         //   isIdle = true;
             /*  numberOfSteps--;
               if (numberOfSteps == 0)
               {
@@ -97,8 +99,8 @@ public class Enemy_SearchTarget : MonoBehaviour
                   numberOfSteps = UnityEngine.Random.Range(1, 15);
 
               }*/
-        }
-        
+       // }
+
     }
     GameObject GetNearestPlayer()
     {
@@ -135,17 +137,13 @@ public class Enemy_SearchTarget : MonoBehaviour
         enemyBody.MovePosition(enemyBody.position + move);
     }
 
-    void Shoot(GameObject nearestPlayeraa)
+    void Attack(GameObject nearestPlayeraa)
     {
         if (Time.time > nextShotTime)
         {
             Animator animator = this.gameObject.GetComponent<Animator>();
             animator.SetBool("Attacking", true);
-            Projectile projectile = Instantiate(projectilePrefab);
-            projectile.transform.position = transform.position;
-            projectile.MovementSpeed = projectileSpeed;
-            projectile.Direction = Direction;
-            projectile.transform.localScale *= projectileSize;
+        
             nextShotTime = Time.time + attackDelay;
             animator.SetBool("Attacking", false);
         }
@@ -165,7 +163,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Collider2D playerCollider = null;
-        if (col.collider.tag == "Projectile")
+        if (col.collider.tag == "PlayerProjectile")
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Hit", true);
@@ -173,17 +171,17 @@ public class Enemy_SearchTarget : MonoBehaviour
             int damage = playerCollider.GetComponent<Projectile>().getDamage();
             TakeDamage(damage);
             StartCoroutine(DelayedContin());
-            
+
+        }
+        if(col.collider.tag == "Player" && isAttacking)
+        {
+            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(damageDealt);
         }
     }
 
     IEnumerator DelayedRemove()
     {
         yield return new WaitForSeconds(0.5f);
-        if(DieCallback != null)
-        {
-            DieCallback();
-        }
         Destroy(this.gameObject);
 
 

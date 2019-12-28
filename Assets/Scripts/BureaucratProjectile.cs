@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
-public class Projectile : MonoBehaviour
+public class BureaucratProjectile : MonoBehaviour
 {
     [SerializeField]
     Vector2 direction;
@@ -14,12 +12,18 @@ public class Projectile : MonoBehaviour
     int damage;
     public Vector2 Direction { get => direction; set => direction = SanitizeDirection(value); }
     public float MovementSpeed { get => movementSpeed; set => movementSpeed = value; }
+    public int Damage { get => damage; set => damage = value; }
 
+    [SerializeField]
+    float lifeSpan;
+    float startTime;
     Rigidbody2D rigidbody;
 
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+        startTime = Time.realtimeSinceStartup;
+        
     }
 
     Vector2 SanitizeDirection(Vector2 dir)
@@ -36,7 +40,8 @@ public class Projectile : MonoBehaviour
     {
         Vector2 move = MovementSpeed * Direction * Time.fixedDeltaTime;
         rigidbody.MovePosition(rigidbody.position + move);
-        if(rigidbody.position.x > 1000 || rigidbody.position.x < -1000 || rigidbody.position.y > 1000 || rigidbody.position.y < -1000)
+      
+        if (Time.realtimeSinceStartup-startTime >= lifeSpan)
         {
             killSelf();
         }
@@ -44,28 +49,16 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (gameObject.tag == "Projectile" && col.collider.tag == "Enemy") 
-        {
-            SnowballSplit split = gameObject.GetComponent<SnowballSplit>();
-            if (split)
-            {
-                split.Split();
-            }
-        }
-        else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
+        if (gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
         }
         killSelf();
-    
     }
-    
+
     public void killSelf()
     {
         Destroy(this.gameObject);
     }
-    public int getDamage()
-    {
-        return damage;
-    }
 }
+
