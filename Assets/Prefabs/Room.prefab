@@ -49,7 +49,7 @@ MonoBehaviour:
   type: 0
   currentState: 0
   enemyPrefabs:
-  - {fileID: 405156937396443045, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
+  - {fileID: 5333867156381111038, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
 --- !u!156049354 &345762769042371404
 Grid:
   m_ObjectHideFlags: 0
