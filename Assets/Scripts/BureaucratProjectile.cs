@@ -49,16 +49,11 @@ public class BureaucratProjectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-       
         if (gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
-            Debug.Log("Hit one Heart");
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
-
-
         }
         killSelf();
-
     }
 
     public void killSelf()
