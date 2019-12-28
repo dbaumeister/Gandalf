@@ -33,6 +33,8 @@ public class Room : MonoBehaviour
     public RoomSpawner Layout { get => layout; set => layout = value; }
     public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
 
+    bool spawnedLoot = false;
+
     void SetState(RoomStates state)
     {
         RoomStates oldState = currentState;
@@ -129,8 +131,15 @@ public class Room : MonoBehaviour
 
     void SpawnLoot()
     {
-        Debug.Log("TODO: Spawn Loot");
-
+        if(!spawnedLoot)
+        {
+            foreach (GameObject obj in Loot)
+            {
+                int spawnPoint = Random.Range(0, SpawnPoints.Count);
+                Instantiate(obj, spawnPoints[spawnPoint].position, Quaternion.identity, transform);
+            }
+            spawnedLoot = true;
+        }
         CurrentState = RoomStates.Done;
     }
 

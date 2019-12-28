@@ -13,6 +13,9 @@ public class Level : MonoBehaviour
     [SerializeField]
     Room roomPrefab;
 
+    [SerializeField]
+    GameObject[] lootTable;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -99,12 +102,12 @@ public class Level : MonoBehaviour
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         if (type == RoomType.Fight)
         {
-            int numWaves = Random.Range(1, 2);
+            int numWaves = Random.Range(1, 3);
             for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         else if (type == RoomType.Boss)
         {
-            int numWaves = Random.Range(4, 5);
+            int numWaves = Random.Range(4, 6);
             for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         return enemyWaves;
@@ -112,8 +115,13 @@ public class Level : MonoBehaviour
 
     IList<GameObject> CreateLoot(RoomType type)
     {
-        // TODO gamble loot
         IList<GameObject> loot = new List<GameObject>();
+        int count = Random.Range(1, 3);
+        for(int i = 0; i < count; ++i)
+        {
+            int index = Random.Range(0, lootTable.Length);
+            loot.Add(lootTable[index]);
+        }
         return loot;
     }
 

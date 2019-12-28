@@ -166,6 +166,11 @@ MonoBehaviour:
   roomCount: 5
   roomPrefab: {fileID: 1137998862174027656, guid: f039b7134b9574542a40f201945cfdbd,
     type: 3}
+  lootTable:
+  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
+  - {fileID: 2681786818365114525, guid: ab702267cc0dfcc40a9cbbdf5be984f1, type: 3}
+  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
