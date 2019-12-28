@@ -23,8 +23,6 @@ public class GroupValues : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Hearts " + hearts);
-
         int count = transform.childCount;
         for(int i = 0; i < count; ++i)
         {

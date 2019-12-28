@@ -47,36 +47,36 @@ public class Level : MonoBehaviour
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)
     {
-        Door doorInLeftRoom = leftRoom.EastDoor;
+        Door doorInLeftRoom = leftRoom.EastDoor();
         doorInLeftRoom.From = leftRoom;
         doorInLeftRoom.To = rightRoom;
         doorInLeftRoom.FromPosition = DoorPosition.East;
         doorInLeftRoom.ToPosition = DoorPosition.West;
-        leftRoom.EastDoor.Show();
+        leftRoom.EastDoor().Show();
 
-        Door doorInRightRoom = rightRoom.WestDoor;
+        Door doorInRightRoom = rightRoom.WestDoor();
         doorInRightRoom.From = rightRoom;
         doorInRightRoom.To = leftRoom;
         doorInRightRoom.FromPosition = DoorPosition.West;
         doorInRightRoom.ToPosition = DoorPosition.East;
-        rightRoom.WestDoor.Show();
+        rightRoom.WestDoor().Show();
     }
 
     void AddVerticalConnection(Room upperRoom, Room lowerRoom)
     {
-        Door doorInUpperRoom = upperRoom.SouthDoor;
+        Door doorInUpperRoom = upperRoom.SouthDoor();
         doorInUpperRoom.From = upperRoom;
         doorInUpperRoom.To = lowerRoom;
         doorInUpperRoom.FromPosition = DoorPosition.South;
         doorInUpperRoom.ToPosition = DoorPosition.North;
-        upperRoom.SouthDoor.Show();
+        upperRoom.SouthDoor().Show();
 
-        Door doorInLowerRoom = lowerRoom.NorthDoor;
+        Door doorInLowerRoom = lowerRoom.NorthDoor();
         doorInLowerRoom.From = lowerRoom;
         doorInLowerRoom.To = upperRoom;
         doorInLowerRoom.FromPosition = DoorPosition.North;
         doorInLowerRoom.ToPosition = DoorPosition.South;
-        lowerRoom.NorthDoor.Show();
+        lowerRoom.NorthDoor().Show();
     }
 
     int AddRoom(RoomType type)
@@ -99,12 +99,13 @@ public class Level : MonoBehaviour
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         if (type == RoomType.Fight)
         {
-            int numWaves = Random.Range(1, 1);
+            int numWaves = Random.Range(1, 2);
             for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         else if (type == RoomType.Boss)
         {
-            enemyWaves.Add(new EnemyWave());
+            int numWaves = Random.Range(4, 5);
+            for (int j = 0; j < numWaves; ++j) enemyWaves.Add(new EnemyWave());
         }
         return enemyWaves;
     }

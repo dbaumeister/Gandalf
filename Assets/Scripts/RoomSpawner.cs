@@ -21,13 +21,32 @@ public class RoomSpawner : MonoBehaviour
 
     RoomLayout layout = null;
 
+    public Door NorthDoor()
+    {
+        return layout.NorthDoor;
+    }
+
+    public Door SouthDoor()
+    {
+        return layout.SouthDoor;
+    }
+
+    public Door EastDoor()
+    {
+        return layout.EastDoor;
+    }
+
+    public Door WestDoor()
+    {
+        return layout.WestDoor;
+    }
+
     void InitializeLayout(RoomLayout[] objs)
     {
         int i = Random.Range(0, objs.Length);
         if (i < objs.Length)
         {
-            layout = objs[i];
-            Instantiate(objs[i], transform);
+            layout = Instantiate(objs[i], transform);
         }
     }
 
