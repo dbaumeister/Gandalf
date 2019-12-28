@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     float nextShotTime;
 
     [SerializeField]
-    Projectile projectilePrefab;
+    public Projectile projectilePrefab;
 
     Vector2 direction;
     public Vector2 Direction { get => GetActualDirection(); set => direction = value; }
@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
             projectile.transform.position = transform.position;
             projectile.MovementSpeed = attributes.ProjectileSpeed;
             projectile.Direction = Direction;
-            projectile.transform.localScale = Vector3.one * attributes.ProjectileSize;
+            projectile.transform.localScale *= attributes.ProjectileSize;
             nextShotTime = Time.time + attributes.AttackDelay;
         }
     }
@@ -76,6 +76,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         appearance.Change(Direction);
+        appearance.attacking = isAttacking;
 
         if(isAttacking)
         {

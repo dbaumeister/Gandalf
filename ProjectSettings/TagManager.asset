@@ -5,15 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Boundaries
-  - Enemy
-  - EnemyProjectile
-  - PlayerProjectile
-  - SouthDoor
-  - NorthDoor
-  - EastDoor
-  - WestDoor
-  - Undefined
-  - GroupValues
+  - Projectile
   layers:
   - Default
   - TransparentFX

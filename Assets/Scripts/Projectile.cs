@@ -44,15 +44,14 @@ public class Projectile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (gameObject.tag == "PlayerProjectile" && col.collider.tag == "Enemy") {
+        if (gameObject.tag == "Projectile" && col.collider.tag == "Enemy") 
+        {
             Debug.Log("Hit ");
-            }
+        }
         else if(gameObject.tag == "EnemyProjectile" && col.collider.tag == "Player")
         {
             Debug.Log("Hit one Heart");
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
-           
-         
         }
         killSelf();
     

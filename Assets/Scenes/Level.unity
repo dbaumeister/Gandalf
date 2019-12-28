@@ -166,6 +166,11 @@ MonoBehaviour:
   roomCount: 5
   roomPrefab: {fileID: 1137998862174027656, guid: f039b7134b9574542a40f201945cfdbd,
     type: 3}
+  lootTable:
+  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
+  - {fileID: 2681786818365114525, guid: ab702267cc0dfcc40a9cbbdf5be984f1, type: 3}
+  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,12 +264,12 @@ PrefabInstance:
     - target: {fileID: 1522031079993062989, guid: e9886065946c3a045b38731e23958859,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.53
+      value: -10.24
       objectReference: {fileID: 0}
     - target: {fileID: 1522031079993062989, guid: e9886065946c3a045b38731e23958859,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.19
+      value: 4.47
       objectReference: {fileID: 0}
     - target: {fileID: 1522031079993062989, guid: e9886065946c3a045b38731e23958859,
         type: 3}
@@ -438,5 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28804156bf16d704681fb8f79103fbc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 4930785555248026035, guid: 651ea5b29a07b0649bd087f67cbabdfa,
-    type: 3}
+  playerPrefab:
+  - {fileID: 4930785555248026035, guid: 651ea5b29a07b0649bd087f67cbabdfa, type: 3}
+  - {fileID: 4930785555248026035, guid: 938d66b8f9b9cea4f98833a5debb825d, type: 3}
+  - {fileID: 4930785555248026035, guid: a8385e1383208e346afc04992ba4ba6b, type: 3}
+  - {fileID: 4930785555248026035, guid: 42cb77cab4d03c0479849804e4f2e57e, type: 3}

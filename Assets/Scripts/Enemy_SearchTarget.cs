@@ -127,7 +127,7 @@ public class Enemy_SearchTarget : MonoBehaviour
             projectile.transform.position = transform.position;
             projectile.MovementSpeed = projectileSpeed;
             projectile.Direction = Direction;
-            projectile.transform.localScale = Vector3.one * projectileSize;
+            projectile.transform.localScale *= projectileSize;
             nextShotTime = Time.time + attackDelay;
             animator.SetBool("Attacking", false);
         }
@@ -147,7 +147,7 @@ public class Enemy_SearchTarget : MonoBehaviour
     void OnCollisionEnter2D(Collision2D col)
     {
         Collider2D playerCollider = null;
-        if (col.collider.tag == "PlayerProjectile")
+        if (col.collider.tag == "Projectile")
         {
             Animator anim = this.gameObject.GetComponent<Animator>();
             anim.SetBool("Hit", true);
