@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [RequireComponent(typeof(Attributes))]
+[RequireComponent(typeof(Weapon))]
 public class Inventory : MonoBehaviour
 {
     Attributes attributes;
@@ -12,10 +13,13 @@ public class Inventory : MonoBehaviour
 
     IList<Item> items;
 
+    Weapon weapon;
+
     // Start is called before the first frame update
     void Start()
     {
         attributes = GetComponent<Attributes>();
+        weapon = GetComponent<Weapon>();
         defaultAttributes = attributes.GetCopy();
         items = new List<Item>();
     }
@@ -25,9 +29,16 @@ public class Inventory : MonoBehaviour
         Item item = collision.collider.GetComponent<Item>();
         if (item)
         {
+            if (item.CompareTag("Projectile"))
+            {
+                ModifyProjectile mod = item.GetComponent<ModifyProjectile>();
+                weapon.projectilePrefab = mod.projectile;
+            }
             items.Add(item);
             Destroy(collision.collider.gameObject);
         }
+
+
     }
 
     private void Update()

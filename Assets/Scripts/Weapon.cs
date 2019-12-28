@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     float nextShotTime;
 
     [SerializeField]
-    Projectile projectilePrefab;
+    public Projectile projectilePrefab;
 
     Vector2 direction;
     public Vector2 Direction { get => GetActualDirection(); set => direction = value; }
@@ -76,6 +76,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         appearance.Change(Direction);
+        appearance.attacking = isAttacking;
 
         if(isAttacking)
         {

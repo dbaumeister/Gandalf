@@ -16,12 +16,11 @@ GameObject:
   - component: {fileID: 4930785555248026037}
   - component: {fileID: 4930785555248026042}
   - component: {fileID: 4930785555248026043}
+  - component: {fileID: 4930785555248026044}
   - component: {fileID: 4930785555248026045}
-  - component: {fileID: 1723086217882919897}
-  - component: {fileID: 8039584659196866540}
-  m_Layer: 10
-  m_Name: Player
-  m_TagString: Player
+  m_Layer: 9
+  m_Name: Player_4
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,15 +74,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 869882107
+  m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 79579bdd0d086af458edef621377966b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70ef942e7d80375439206d2a56756725, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 0.99, y: 1.44}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -167,10 +166,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b651fce8acd754291d3721f6118aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  up: {fileID: 21300000, guid: 79579bdd0d086af458edef621377966b, type: 3}
-  down: {fileID: 21300000, guid: 8846e2e6391f44f4e8c3bb64d6c35539, type: 3}
-  left: {fileID: 21300000, guid: b87310c89621e10429d4922455ec13ab, type: 3}
-  right: {fileID: 21300000, guid: ec8071d06accfff4392c046f11f6642e, type: 3}
+  up: {fileID: 21300000, guid: 06587b58594507f4385afb744557f3e9, type: 3}
+  down: {fileID: 21300000, guid: 70ef942e7d80375439206d2a56756725, type: 3}
+  right:
+  - {fileID: 21300000, guid: d494f09a605adf241af96bf5f022780a, type: 3}
+  - {fileID: 21300000, guid: a8e6b2ef26084094182df7cc9e423e8b, type: 3}
+  - {fileID: 21300000, guid: f44a1600bf77dde46ab965f4d930f55e, type: 3}
+  att_up: {fileID: 21300000, guid: 03c95a32b131f0142b3d2a0756705f7e, type: 3}
+  att_down: {fileID: 21300000, guid: d38fdb00b2412fd45b1e2ebc8f46468b, type: 3}
+  att_right:
+  - {fileID: 21300000, guid: 0d1e8403d978fa34bbfa7acef25b40ec, type: 3}
+  - {fileID: 21300000, guid: c43f1da9a4c44684296c37a16cfea60e, type: 3}
+  - {fileID: 21300000, guid: 7724cb31f2ec1a643aa35e683d5a5cdb, type: 3}
+  attacking: 0
 --- !u!114 &4930785555248026043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +191,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78e04e50fcd4514498394b09c916aece, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!61 &4930785555248026044
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930785555248026035}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.99, y: 1.44}
+    newSize: {x: 0.99, y: 1.44}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.99, y: 1.44}
+  m_EdgeRadius: 0
 --- !u!114 &4930785555248026045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,31 +294,3 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1723086217882919897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4930785555248026035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec79f765e7047e94fb4224763c5af245, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!70 &8039584659196866540
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4930785555248026035}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.06619537, y: 0.012035489}
-  m_Size: {x: 0.5687567, y: 0.9826505}
-  m_Direction: 0
