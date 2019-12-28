@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7b5e7b595b9ed439dd79483aff4297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 5
+  roomCount: 10
   roomPrefab: {fileID: 1137998862174027656, guid: f039b7134b9574542a40f201945cfdbd,
     type: 3}
   lootTable:

@@ -136,21 +136,21 @@ public class Level : MonoBehaviour
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         if (type == RoomType.Fight)
         {
-            int numWaves = Random.Range(1, 3);
+            int numWaves = Random.Range(3, 5);
             for (int j = 0; j < numWaves; ++j)
             {
                 EnemyWave wave = new EnemyWave();
-                wave.RemainingEnemies = Random.Range(2, 5);
+                wave.RemainingEnemies = Random.Range(6, 10);
                 enemyWaves.Add(wave);
             }
         }
         else if (type == RoomType.Boss)
         {
-            int numWaves = Random.Range(4, 6);
+            int numWaves = Random.Range(10, 12);
             for (int j = 0; j < numWaves; ++j)
             {
                 EnemyWave wave = new EnemyWave();
-                wave.RemainingEnemies = Random.Range(4, 7);
+                wave.RemainingEnemies = Random.Range(10, 15);
                 enemyWaves.Add(wave);
             }
         }
@@ -160,7 +160,7 @@ public class Level : MonoBehaviour
     IList<GameObject> CreateLoot(RoomType type)
     {
         IList<GameObject> loot = new List<GameObject>();
-        int count = Random.Range(1, 3);
+        int count = Random.Range(5, 7);
         for(int i = 0; i < count; ++i)
         {
             int index = Random.Range(0, lootTable.Length);
