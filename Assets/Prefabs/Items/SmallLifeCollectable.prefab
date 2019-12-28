@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 39494173663627556}
   - component: {fileID: 4462132722640309211}
   - component: {fileID: 4462132722640309210}
+  - component: {fileID: 8368615645873503147}
   m_Layer: 0
-  m_Name: CoinCollectable
+  m_Name: SmallLifeCollectable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 39494173663627561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c14259880fbb0c4a8d1bcface1e4781, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec73f5f1fb579eb4eb89ef318ee96f97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -164,3 +165,16 @@ MonoBehaviour:
   projectileSize: 0
   projectileCount: 0
   weaponDamage: 0
+--- !u!114 &8368615645873503147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39494173663627561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86864dc11ee264f41b3f4cdb68604671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeModificator: -1
