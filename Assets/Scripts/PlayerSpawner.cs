@@ -3,20 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(PlayerInputManager))]
 public class PlayerSpawner : MonoBehaviour
 {
     [SerializeField]
     GameObject[] playerPrefab;
 
     Dictionary<InputDevice, PlayerInput> inputMap;
-    IList<PlayerInput> removedPlayers;
+    IList<GameObject> availablePlayers;
 
     // Start is called before the first frame update
     void Awake()
     {
+        GetComponent<PlayerInputManager>().DisableJoining();
+
         InputSystem.onDeviceChange += OnDeviceChange;
         inputMap = new Dictionary<InputDevice, PlayerInput>();
-        removedPlayers = new List<PlayerInput>();
+        availablePlayers = new List<GameObject>();
+
+        foreach(GameObject player in playerPrefab)
+        {
+            GameObject instance = Instantiate(player);
+            instance.SetActive(false);
+            availablePlayers.Add(instance);
+        }
     }
 
     private void Start()
@@ -53,7 +63,7 @@ public class PlayerSpawner : MonoBehaviour
         if(inputMap.ContainsKey(device))
         {
             PlayerInput player = inputMap[device];
-            removedPlayers.Add(player);
+            availablePlayers.Add(player.gameObject);
             player.gameObject.SetActive(false);
             inputMap.Remove(device);
         }
@@ -61,21 +71,14 @@ public class PlayerSpawner : MonoBehaviour
 
     void SpawnPlayer(InputDevice device)
     {
-        if(!inputMap.ContainsKey(device))
+        if(!inputMap.ContainsKey(device) && availablePlayers.Count > 0)
         {
-            PlayerInput player;
-            if (removedPlayers.Count > 0)
-            {
-                player = removedPlayers[removedPlayers.Count - 1];
-                removedPlayers.RemoveAt(removedPlayers.Count - 1);
-                player.gameObject.SetActive(true);
-            }
-            else
-            {
-                player = PlayerInput.Instantiate(playerPrefab[inputMap.Count], pairWithDevice : device);
-            }
+            GameObject old = availablePlayers[availablePlayers.Count - 1];
+            availablePlayers.RemoveAt(availablePlayers.Count - 1);
 
+            PlayerInput player = PlayerInput.Instantiate(old, pairWithDevice: device);
             inputMap.Add(device, player);
+            Destroy(old);
         }
     }
 }
