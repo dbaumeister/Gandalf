@@ -18,6 +18,18 @@ public class Weapon : MonoBehaviour
     Vector2 direction;
     public Vector2 Direction { get => GetActualDirection(); set => direction = value; }
 
+    [SerializeField]
+    Transform leftShootPoint;
+
+    [SerializeField]
+    Transform rightShootPoint;
+
+    [SerializeField]
+    Transform upShootPoint;
+
+    [SerializeField]
+    Transform downShootPoint;
+
     bool isAttacking;
 
     public void Shoot(InputAction.CallbackContext context)
@@ -36,8 +48,19 @@ public class Weapon : MonoBehaviour
     {
         if(Time.time > nextShotTime)
         {
+            // 4 shoot points depending on the orientation of the player.
+            Orientation orientation = GetOrientation();
+            Transform point = null;
+            switch(orientation)
+            {
+                case Orientation.Left: point = leftShootPoint; break;
+                case Orientation.Right: point = rightShootPoint; break;
+                case Orientation.Down: point = downShootPoint; break;
+                case Orientation.Up: point = upShootPoint; break;
+            }
+
             Projectile projectile = Instantiate(projectilePrefab);
-            projectile.transform.position = transform.position;
+            projectile.transform.position = point.position;
             projectile.MovementSpeed = attributes.ProjectileSpeed;
             projectile.Direction = Direction;
             projectile.transform.localScale *= attributes.ProjectileSize;
@@ -71,6 +94,38 @@ public class Weapon : MonoBehaviour
             dir = GetComponent<Boots>().Direction;
         }
         return dir;
+    }
+
+    enum Orientation
+    {
+        Up, Down, Left, Right
+    }
+
+    Orientation GetOrientation()
+    {
+        Vector2 dir = Direction;
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            if (dir.x > 0)
+            {
+                return Orientation.Right;
+            }
+            else
+            {
+                return Orientation.Left;
+            }
+        }
+        else
+        {
+            if (dir.y > 0)
+            {
+                return Orientation.Up;
+            }
+            else
+            {
+                return Orientation.Down;
+            }
+        }
     }
 
     void Update()
