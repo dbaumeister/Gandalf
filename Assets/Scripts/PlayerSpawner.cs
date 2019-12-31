@@ -25,6 +25,7 @@ public class PlayerSpawner : MonoBehaviour
         {
             GameObject instance = Instantiate(player);
             instance.SetActive(false);
+            instance.name = "Player " + availablePlayers.Count;
             availablePlayers.Add(instance);
         }
     }
@@ -77,6 +78,7 @@ public class PlayerSpawner : MonoBehaviour
             availablePlayers.RemoveAt(availablePlayers.Count - 1);
 
             PlayerInput player = PlayerInput.Instantiate(old, pairWithDevice: device);
+            player.name = "Player " + availablePlayers.Count;
             inputMap.Add(device, player);
             Destroy(old);
         }
