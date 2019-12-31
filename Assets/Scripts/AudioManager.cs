@@ -9,6 +9,9 @@ public class AudioManager : MonoBehaviour
     float nextCall;
     static float DELAY = 5f;
 
+    string lastClip = null;
+    float lastClipTime = 0;
+
     GameObject empty;
 
     // Start is called before the first frame update
@@ -22,13 +25,33 @@ public class AudioManager : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>().SecretPlaySound(clip);
     }
+    
+    private void SecretPlaySound(AudioClip clip)
+    {
+        // only allow one clip every second.
+        // and only allow one clip every other second.
+        float timeSinceLastClip = Time.time - lastClipTime;
+        float allowedTimeSinceLastClip = 0;
 
-    public void SecretPlaySound(AudioClip clip)
-    {       
-        GameObject o = Instantiate(empty, transform);       
-        AudioSource source = o.AddComponent<AudioSource>();
-        source.PlayOneShot(clip, 0.7f);
+        if (lastClip == clip.name)
+        {
+            allowedTimeSinceLastClip = 2;
+        }
+        else
+        {
+            allowedTimeSinceLastClip = 1;
+        }
 
+        if (timeSinceLastClip > allowedTimeSinceLastClip)
+        {
+            // Play the clip
+            GameObject o = Instantiate(empty, transform);
+            AudioSource source = o.AddComponent<AudioSource>();
+            source.PlayOneShot(clip, 0.7f);
+
+            lastClip = clip.name;
+            lastClipTime = Time.time;
+        }
     }
 
     // Update is called once per frame
