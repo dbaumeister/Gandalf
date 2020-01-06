@@ -106,13 +106,6 @@ public class Enemy_SearchTarget : MonoBehaviour
         return nextPlayerInRange;
     }
 
-    Vector2 turn(float switchX, float switchY, GameObject currentEnemy)
-    {
-        Vector2 reTurn = new Vector2();
-        reTurn.x = currentEnemy.transform.position.x / currentEnemy.transform.position.y + switchX;
-        reTurn.y = currentEnemy.transform.position.y / currentEnemy.transform.position.x + switchY;
-        return reTurn;
-    }
     void EnemyMove()
     {
         Rigidbody2D enemyBody = this.gameObject.GetComponent<Rigidbody2D>();
@@ -147,7 +140,7 @@ public class Enemy_SearchTarget : MonoBehaviour
             StartCoroutine(DelayedRemove());
         }
     }
-    // called when the cube hits the floor
+
     void OnCollisionEnter2D(Collision2D col)
     {
         Collider2D playerCollider = null;
