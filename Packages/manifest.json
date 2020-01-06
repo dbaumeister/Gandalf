@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git#master",
     "com.unity.2d.animation": "2.2.1-preview.2",
     "com.unity.2d.ik": "1.2.0-preview.2",
     "com.unity.2d.pixel-perfect": "1.0.1-preview",
@@ -53,5 +54,11 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.h8man.2d.navmeshplus": {
+      "hash": "3e4a07a5d5ce1eb492b206bda103fb50a021a780",
+      "revision": "master"
+    }
   }
 }
