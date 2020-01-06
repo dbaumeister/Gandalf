@@ -1,7 +1,9 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class Enemy_SearchTarget : MonoBehaviour
 {
     [SerializeField]
@@ -25,7 +27,9 @@ public class Enemy_SearchTarget : MonoBehaviour
     BureaucratProjectile burProjectilePrefab;
     bool isIdle;
     bool alreadyDead;
-    
+
+
+    NavMeshAgent agent;
 
     public delegate void Died();
     public event Died DieCallback;
@@ -34,9 +38,24 @@ public class Enemy_SearchTarget : MonoBehaviour
     {
         isIdle = true;
         alreadyDead = false;
-    
 
+        agent = GetComponent<NavMeshAgent>();
 
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.destination = AcquireTargetPosition();
+        agent.updatePosition = true;
+        transform.rotation = Quaternion.identity;
+    }
+
+    Vector3 AcquireTargetPosition()
+    {
+        GameObject target = GameObject.FindGameObjectWithTag("Player");
+        if (target != null)
+        {
+            return target.transform.position;
+        }
+        else return transform.position;
     }
 
     // Update is called once per frame
@@ -52,13 +71,12 @@ public class Enemy_SearchTarget : MonoBehaviour
 
 
     }
-
-
+    
     void FixedUpdate()
     {
-
         EnemyMove();
     }
+
     void EvaluateDirection()
     {
         Direction = Vector2.zero;
@@ -113,11 +131,10 @@ public class Enemy_SearchTarget : MonoBehaviour
         reTurn.y = currentEnemy.transform.position.y / currentEnemy.transform.position.x + switchY;
         return reTurn;
     }
+
     void EnemyMove()
     {
-        Rigidbody2D enemyBody = this.gameObject.GetComponent<Rigidbody2D>();
-        Vector2 move = movementSpeed * Direction * Time.fixedDeltaTime;
-        enemyBody.MovePosition(enemyBody.position + move);
+        Debug.Log(agent.SetDestination(AcquireTargetPosition()));
     }
 
     void Shoot(GameObject nearestPlayeraa)
