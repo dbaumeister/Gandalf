@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(RoomLayout))]
 public class Room : MonoBehaviour
 {
     [SerializeField]
-    RoomSpawner layout;
+    RoomLayout layout;
 
     [SerializeField]
     RoomType type;
+
+    [SerializeField]
+    GameObject[] lootTable;
+
+    [SerializeField]
+    int[] enemiesPerWave;
 
     [SerializeField]
     IList<EnemyWave> enemyWaves;
@@ -36,9 +43,22 @@ public class Room : MonoBehaviour
     public IList<EnemyWave> EnemyWaves { get => enemyWaves; set => enemyWaves = value; }
     public IList<GameObject> Loot { get => loot; set => loot = value; }
     public RoomStates CurrentState { get => currentState; set => SetState(value); }
-    public RoomSpawner Layout { get => layout; set => layout = value; }
+    public RoomLayout Layout { get => layout; set => layout = value; }
     public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
     public bool RoomDone { get => roomDone; set => roomDone = value; }
+
+	public void Awake() {
+		//layout
+		layout = GetComponent<RoomLayout>();
+
+        spawnPoints = GetSpawnPoints();
+
+		//loot
+        loot = CreateLoot();
+		//determine waves
+        enemyWaves = CreateWaves();
+		
+	}
 
     void SetState(RoomStates state)
     {
@@ -60,6 +80,7 @@ public class Room : MonoBehaviour
             case RoomStates.Initial:
                 break;
             case RoomStates.SpawnEnemies:
+                Debug.Log("spwaning enemies");
                 SpawnEnemies();
                 break;
             case RoomStates.SpawnLoot:
@@ -70,22 +91,22 @@ public class Room : MonoBehaviour
 
     public Door NorthDoor()
     {
-        return layout.NorthDoor();
+        return layout.NorthDoor;
     }
 
     public Door SouthDoor()
     {
-        return layout.SouthDoor();
+        return layout.SouthDoor;
     }
 
     public Door EastDoor()
     {
-        return layout.EastDoor();
+        return layout.EastDoor;
     }
 
     public Door WestDoor()
     {
-        return layout.WestDoor();
+        return layout.WestDoor;
     }
 
     void FinishedRoom()
@@ -198,5 +219,53 @@ public class Room : MonoBehaviour
     public void LeaveRoom()
     {
         gameObject.SetActive(false);
+    }
+
+
+    IList<EnemyWave> CreateWaves()
+    {
+        IList<EnemyWave> enemyWaves = new List<EnemyWave>();
+        int numWaves = enemiesPerWave.Length;
+        for (int waveCounter = 0; waveCounter < numWaves; ++waveCounter)
+        {
+            EnemyWave wave = new EnemyWave();
+            wave.RemainingEnemies = enemiesPerWave[waveCounter];
+            enemyWaves.Add(wave);
+        }
+
+        return enemyWaves;
+    }
+
+    IList<GameObject> CreateLoot()
+    {
+        IList<GameObject> loot = new List<GameObject>();
+        if(lootTable.Length == 0) {
+            return loot;
+        }
+
+
+        int count = Random.Range(5, 7);
+        for(int i = 0; i < count; ++i)
+        {
+            int index = Random.Range(0, lootTable.Length);
+            loot.Add(lootTable[index]);
+        }
+        return loot;
+    }
+
+    private IList<Transform> GetSpawnPoints()
+    {
+        IList<Transform> positions = new List<Transform>();
+        if(!layout)
+        {
+            return positions;
+        }
+
+        GameObject[] objs = layout.SpawnPoints;
+        for(int i = 0; i < objs.Length; ++i)
+        {
+            positions.Add(objs[i].transform);
+        }
+        return positions;
     }
 }

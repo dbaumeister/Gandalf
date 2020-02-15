@@ -12403,6 +12403,7 @@ GameObject:
   - component: {fileID: 530332043126536579}
   - component: {fileID: 2164948296942593833}
   - component: {fileID: -8687530777790886796}
+  - component: {fileID: -7534027952646870176}
   m_Layer: 0
   m_Name: RoomLayout_Fight_03
   m_TagString: Untagged
@@ -12474,6 +12475,31 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-7534027952646870176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719391254356648761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8ab6f7de4e2c04f994b44ada8d9fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 0}
+  type: 0
+  lootTable:
+  - {fileID: 8626134684881450564, guid: d7dd369600930a9408ab4d4341727bfa, type: 3}
+  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
+  - {fileID: 39494173663627561, guid: 06a01369d3d7bde4eaef59f9a4fc5b26, type: 3}
+  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
+  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  enemiesPerWave: 04000000
+  currentState: 0
+  enemyPrefabs:
+  - {fileID: 5333867156381111038, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
 --- !u!1 &6307122726878924750
 GameObject:
   m_ObjectHideFlags: 0

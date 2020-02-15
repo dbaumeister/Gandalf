@@ -6990,6 +6990,7 @@ GameObject:
   - component: {fileID: 2071662969795947728}
   - component: {fileID: 402906489205650042}
   - component: {fileID: 4566139455845010827}
+  - component: {fileID: -735255946916139793}
   m_Layer: 0
   m_Name: RoomLayout_Special_01
   m_TagString: Untagged
@@ -7055,6 +7056,25 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &-735255946916139793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107800678585054826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8ab6f7de4e2c04f994b44ada8d9fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layout: {fileID: 0}
+  type: 0
+  lootTable:
+  - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
+  currentState: 0
+  enemyPrefabs:
+  - {fileID: 5333867156381111038, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
 --- !u!1 &6153649362005612793
 GameObject:
   m_ObjectHideFlags: 0
