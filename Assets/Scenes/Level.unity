@@ -165,30 +165,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb7b5e7b595b9ed439dd79483aff4297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomCount: 10
-  roomPrefab: {fileID: 1137998862174027656, guid: f039b7134b9574542a40f201945cfdbd,
-    type: 3}
-  lootTable:
-  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
-  - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
-  - {fileID: 2681786818365114525, guid: ab702267cc0dfcc40a9cbbdf5be984f1, type: 3}
-  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
-  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 8626134684881450564, guid: d7dd369600930a9408ab4d4341727bfa, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
-  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
-  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
-  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
+  bossRooms:
+  - {fileID: -1182254106530964419, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
+  fightRooms:
+  - {fileID: 1235277102490755449, guid: 4469c30056d243d42b7e66e83418d8c1, type: 3}
+  - {fileID: -3675719792164452764, guid: 1e7990be0c78e5c409cf7744521689e9, type: 3}
+  - {fileID: -7534027952646870176, guid: 517e9c9a59ff1da40b2707fd1eeb92f7, type: 3}
+  shopRooms:
+  - {fileID: 8420137639686550725, guid: f202a5e2fc14955488ff321790d29403, type: 3}
+  specialRooms:
+  - {fileID: -735255946916139793, guid: d849ee6b6a5e2f14fbc1dd62cc8087c2, type: 3}
+  startRooms:
+  - {fileID: 4113012660386309784, guid: cd962fb347da2d349a08af64c9f44c6a, type: 3}
+  - {fileID: -3461414817711454530, guid: 86053064deefff96d88f3cfa605d6a71, type: 3}
+  roomCount: 3
   splashScreen: {fileID: 1102736614}
 --- !u!82 &415545215
 AudioSource:
