@@ -14,50 +14,57 @@ public class GroupValues : MonoBehaviour
 
     [SerializeField]
     float heartDistance = 0.3f;
+    [SerializeField]
+    uint heartRowLength = 60;
 
     public delegate void PlayersDied();
     public event PlayersDied OnPlayersDied;
 
-    // Update is called once per frame
-    void Update()
-    {
-        int count = transform.childCount;
-        for(int i = 0; i < count; ++i)
-        {
-            Destroy(transform.GetChild(i).gameObject);
+    List<GameObject> heartObjects;
+
+    Vector3 heartLocation(int heartIndex) {
+        return Vector3.right * (heartIndex % heartRowLength * heartDistance) + Vector3.down * (heartIndex / heartRowLength * heartDistance);
+    }
+
+    void Awake() {
+        heartObjects = new List<GameObject>();
+        setHearts(hearts);
+    }
+
+    void setHearts(int hearts) {
+        this.hearts = hearts;
+
+        for (int i=hearts; i < heartObjects.Count; ++i) {
+            heartObjects.RemoveAt(hearts);
         }
-        for(int i = 0; i < hearts; ++i)
-        {
+        for (int i=heartObjects.Count; i < hearts; ++i) {
             GameObject obj = Instantiate(heartsPrefab, transform);
-            obj.transform.Translate(Vector3.right * heartDistance * i);
+            obj.transform.Translate(heartLocation(i));
+            heartObjects.Add(obj);
         }
 
-        if (hearts <= 0)
-        {
-            GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject player in allPlayers)
-            {
-                if(OnPlayersDied != null)
-                {
-                    OnPlayersDied();
-                }
+        if (hearts <= 0) {
+            if(OnPlayersDied != null) {
+                OnPlayersDied();
+            }
 
+            GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in allPlayers) {
                 Destroy(player);
             }
         }
     }
+
     public int getHearts()
     {
         return this.hearts;
-
     }
     public void addHearts(int hearts)
     {
-        this.hearts += hearts;
+        setHearts(this.hearts + hearts);
     } 
     public void takeHearts(int hearts)
     {
-        this.hearts -= hearts;
-       
+        setHearts(this.hearts - hearts);
     }
 }
