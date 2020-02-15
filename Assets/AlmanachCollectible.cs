@@ -17,7 +17,7 @@ public class AlmanachCollectible : Item
         choice = Random.Range(0, 2);
     }
 
-    // Every few seconds changes the direction of Movement or Projectiles for a few seconds
+
     public override Attributes Apply(Attributes other)
     {
 
