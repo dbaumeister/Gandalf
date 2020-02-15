@@ -134,7 +134,7 @@ public class Enemy_SearchTarget : MonoBehaviour
 
     void EnemyMove()
     {
-        Debug.Log(agent.SetDestination(AcquireTargetPosition()));
+        //Debug.Log(agent.SetDestination(AcquireTargetPosition()));
     }
 
     void Shoot(GameObject nearestPlayeraa)

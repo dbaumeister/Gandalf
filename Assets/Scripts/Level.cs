@@ -60,8 +60,10 @@ public class Level : MonoBehaviour
         AddVerticalConnection(rooms[conn], rooms[special]);
 
         rooms[start].EnterRoom(DoorPosition.West);
+    }
 
-
+    void OnDestroy() {
+        GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().OnPlayersDied -= OnPlayersDied;
     }
 
     void AddHorizontalConnection(Room leftRoom, Room rightRoom)

@@ -21,6 +21,7 @@ public class PlayerSpawner : MonoBehaviour
         inputMap = new Dictionary<InputDevice, PlayerInput>();
         availablePlayers = new List<GameObject>();
 
+
         foreach(GameObject player in playerPrefab)
         {
             GameObject instance = Instantiate(player);
