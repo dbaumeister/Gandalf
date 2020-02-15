@@ -177,7 +177,6 @@ MonoBehaviour:
   - {fileID: -735255946916139793, guid: d849ee6b6a5e2f14fbc1dd62cc8087c2, type: 3}
   startRooms:
   - {fileID: 4113012660386309784, guid: cd962fb347da2d349a08af64c9f44c6a, type: 3}
-  - {fileID: -3461414817711454530, guid: 86053064deefff96d88f3cfa605d6a71, type: 3}
   roomCount: 3
   splashScreen: {fileID: 1102736614}
 --- !u!82 &415545215
