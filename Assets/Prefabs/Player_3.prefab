@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 4930785555248026043}
   - component: {fileID: 4930785555248026045}
   - component: {fileID: -256699466817939827}
+  - component: {fileID: 4720803215803218363}
   m_Layer: 10
   m_Name: Player_3
   m_TagString: Player
@@ -299,6 +300,21 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c0d1dcc8-f606-4a76-a281-7f918b12ad57
     m_ActionName: Gameplay/Shoot
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4720803215803218363}
+        m_MethodName: Interact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f5ae9ea1-1870-4623-ba5a-8371665bfbfb
+    m_ActionName: Gameplay/Interact[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -320,6 +336,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.032879025, y: -0.3262537}
   m_Size: {x: 0.6353894, y: 0.7673756}
   m_Direction: 0
+--- !u!114 &4720803215803218363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930785555248026035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c36d913af93dd8d71801330c40b4e335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5235431452915684944
 GameObject:
   m_ObjectHideFlags: 0
