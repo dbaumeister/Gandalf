@@ -12402,6 +12402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 530332043126536579}
   - component: {fileID: 2164948296942593833}
+  - component: {fileID: -8687530777790886796}
   m_Layer: 0
   m_Name: RoomLayout_Fight_03
   m_TagString: Untagged
@@ -12461,6 +12462,18 @@ MonoBehaviour:
   southDoor: {fileID: 3144483117393171930}
   eastDoor: {fileID: 8487014072547970025}
   westDoor: {fileID: 867919114593579845}
+--- !u!156049354 &-8687530777790886796
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5719391254356648761}
+  m_Enabled: 1
+  m_CellSize: {x: 0.5, y: 0.5, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &6307122726878924750
 GameObject:
   m_ObjectHideFlags: 0

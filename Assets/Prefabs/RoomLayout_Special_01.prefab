@@ -6989,6 +6989,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2071662969795947728}
   - component: {fileID: 402906489205650042}
+  - component: {fileID: 4566139455845010827}
   m_Layer: 0
   m_Name: RoomLayout_Special_01
   m_TagString: Untagged
@@ -7042,6 +7043,18 @@ MonoBehaviour:
   southDoor: {fileID: 3476615001026461833}
   eastDoor: {fileID: 7952220070390947514}
   westDoor: {fileID: 1699950007107184150}
+--- !u!156049354 &4566139455845010827
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107800678585054826}
+  m_Enabled: 1
+  m_CellSize: {x: 0.5, y: 0.5, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &6153649362005612793
 GameObject:
   m_ObjectHideFlags: 0
