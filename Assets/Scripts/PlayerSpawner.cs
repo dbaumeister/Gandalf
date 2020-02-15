@@ -45,6 +45,7 @@ public class PlayerSpawner : MonoBehaviour
         {
             case InputDeviceChange.Reconnected:
             case InputDeviceChange.Added:
+		Debug.Log("INPUT DEVICE ADDED");
                 SpawnPlayer(device);
                 break;
             case InputDeviceChange.Disconnected:

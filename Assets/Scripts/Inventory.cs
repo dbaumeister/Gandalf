@@ -44,7 +44,21 @@ public class Inventory : MonoBehaviour
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
         }
 
-        if(item || modifier)
+
+        CoffeeCollectible coffee = collision.collider.GetComponent<CoffeeCollectible>();
+        if (coffee)
+        {
+            coffee.StartingTime = Time.time;
+        }
+
+        BoozeCollectible booze = collision.collider.GetComponent<BoozeCollectible>();
+        if (booze)
+        {
+            booze.StartingTime = Time.time;
+        }
+
+
+        if (item || modifier || coffee || booze)
         {            
             if (item.Sound)
             {

@@ -8,13 +8,22 @@ public class Level : MonoBehaviour
     IList<Room> rooms;
 
     [SerializeField]
+    Room[] bossRooms;
+
+    [SerializeField]
+    Room[] fightRooms;
+
+    [SerializeField]
+    Room[] shopRooms;
+
+    [SerializeField]
+    Room[] specialRooms;
+
+    [SerializeField]
+    Room[] startRooms;
+
+    [SerializeField]
     int roomCount = 5;
-
-    [SerializeField]
-    Room roomPrefab;
-
-    [SerializeField]
-    GameObject[] lootTable;
 
     [SerializeField]
     SplashScreen splashScreen;
@@ -89,20 +98,44 @@ public class Level : MonoBehaviour
         lowerRoom.NorthDoor().Show();
     }
 
+    Room InstantiateRoom(Room[] objs)
+    {
+        int i = Random.Range(0, objs.Length);
+       	Room room = Instantiate(objs[i], transform);
+		return room;
+
+    }
+
     int AddRoom(RoomType type)
     {
-        Room room = Instantiate(roomPrefab);;
+		//randomly choose a prefab of the selected room type
+
+		Room room = null;
+        switch(type)
+        {
+            case RoomType.Boss:
+                room = InstantiateRoom(bossRooms);
+                break;
+            case RoomType.Fight:
+                room = InstantiateRoom(fightRooms);
+                break;
+            case RoomType.Shop:
+                room = InstantiateRoom(shopRooms);
+                break;
+            case RoomType.Special:
+                room = InstantiateRoom(specialRooms);
+                break;
+            case RoomType.Start:
+                room = InstantiateRoom(startRooms);
+                break;
+        }
+		Debug.Assert(room != null);
+
         room.gameObject.SetActive(false);
         room.CurrentState = RoomStates.Initial;
         room.Type = type;
-        room.EnemyWaves = CreateWaves(type);
-        room.Loot = CreateLoot(type);
         room.name = "Room (" + type + ")";
-        room.Layout.Initialize(type);
-        room.SpawnPoints = room.Layout.GetSpawnPoints();
-
         room.OnRoomFinished += OnRoomFinished;
-
         rooms.Add(room);
         return rooms.Count - 1;
     }
@@ -129,44 +162,6 @@ public class Level : MonoBehaviour
     void OnPlayersDied()
     {
         splashScreen.ShowFailure();
-    }
-
-    IList<EnemyWave> CreateWaves(RoomType type)
-    {
-        IList<EnemyWave> enemyWaves = new List<EnemyWave>();
-        if (type == RoomType.Fight)
-        {
-            int numWaves = Random.Range(3, 5);
-            for (int j = 0; j < numWaves; ++j)
-            {
-                EnemyWave wave = new EnemyWave();
-                wave.RemainingEnemies = Random.Range(6, 10);
-                enemyWaves.Add(wave);
-            }
-        }
-        else if (type == RoomType.Boss)
-        {
-            int numWaves = Random.Range(10, 12);
-            for (int j = 0; j < numWaves; ++j)
-            {
-                EnemyWave wave = new EnemyWave();
-                wave.RemainingEnemies = Random.Range(10, 15);
-                enemyWaves.Add(wave);
-            }
-        }
-        return enemyWaves;
-    }
-
-    IList<GameObject> CreateLoot(RoomType type)
-    {
-        IList<GameObject> loot = new List<GameObject>();
-        int count = Random.Range(5, 7);
-        for(int i = 0; i < count; ++i)
-        {
-            int index = Random.Range(0, lootTable.Length);
-            loot.Add(lootTable[index]);
-        }
-        return loot;
     }
 
     public void Transition(Door door)
