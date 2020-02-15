@@ -11821,6 +11821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3684776177679954236}
   - component: {fileID: 3059522249714741142}
+  - component: {fileID: 5140676559315334396}
   m_Layer: 0
   m_Name: RoomLayout_Boss_01
   m_TagString: Untagged
@@ -11896,3 +11897,15 @@ MonoBehaviour:
   southDoor: {fileID: 2296159592969788773}
   eastDoor: {fileID: 4735820962489533270}
   westDoor: {fileID: 4068331087982509050}
+--- !u!156049354 &5140676559315334396
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8872573182047447942}
+  m_Enabled: 1
+  m_CellSize: {x: 0.5, y: 0.5, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0

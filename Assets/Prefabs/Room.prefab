@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1137998862174027657}
   - component: {fileID: 1137998862174027656}
-  - component: {fileID: 345762769042371404}
   m_Layer: 0
   m_Name: Room
   m_TagString: Untagged
@@ -50,18 +49,6 @@ MonoBehaviour:
   currentState: 0
   enemyPrefabs:
   - {fileID: 5333867156381111038, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
---- !u!156049354 &345762769042371404
-Grid:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137998862174027662}
-  m_Enabled: 1
-  m_CellSize: {x: 0.5, y: 0.5, z: 1}
-  m_CellGap: {x: 0, y: 0, z: 0}
-  m_CellLayout: 0
-  m_CellSwizzle: 0
 --- !u!1 &4943124341565443087
 GameObject:
   m_ObjectHideFlags: 0

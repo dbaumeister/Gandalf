@@ -3401,6 +3401,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207042041684079997}
   - component: {fileID: 691066667429751767}
+  - component: {fileID: 6408513093974255647}
   m_Layer: 0
   m_Name: RoomLayout_Start_01
   m_TagString: Untagged
@@ -3456,6 +3457,18 @@ MonoBehaviour:
   southDoor: {fileID: 4341235594197997860}
   eastDoor: {fileID: 7087458741878802199}
   westDoor: {fileID: 1988110191841116091}
+--- !u!156049354 &6408513093974255647
+Grid:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395960785742180295}
+  m_Enabled: 1
+  m_CellSize: {x: 0.5, y: 0.5, z: 1}
+  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellLayout: 0
+  m_CellSwizzle: 0
 --- !u!1 &6441949927679017300
 GameObject:
   m_ObjectHideFlags: 0
