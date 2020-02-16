@@ -15,8 +15,6 @@ public class BossWalk : StateMachineBehaviour
         Vector2 random = new Vector2(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
         targetLocation = leftUpper + random * distance;
 
-        Debug.Log("New Target Position: " + targetLocation);
-
         if(Vector2.Distance(targetLocation, pos) < 3)
         {
             GenerateRandomTargetLocation(pos);
@@ -33,13 +31,7 @@ public class BossWalk : StateMachineBehaviour
     {
         float speed = 10.0f;
         Vector2 newPosition = Vector2.MoveTowards(rb.position, targetLocation, speed * Time.fixedDeltaTime);
-
-        Debug.Log("Old position: " + rb.position);
-
         rb.MovePosition(newPosition);
-
-        Debug.Log("Walk to new position: " + newPosition);
-
 
         if (IsCloseToTarget(newPosition))
         {
@@ -57,6 +49,7 @@ public class BossWalk : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         WalkToTargetLocation(animator.GetComponent<Rigidbody2D>());
+        animator.GetComponent<BossLook>().LookInMoveDirection();
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
