@@ -13,8 +13,8 @@ public class Boss_Flight_Fly : StateMachineBehaviour
 
     void ChooseStartAndEnd()
     {
-        start = new Vector2(-20f, Random.Range(-3f, 3f));
-        end = new Vector2(20f, Random.Range(-3f, 3f));
+        start = new Vector2(-20f, Random.Range(-4f, 2f));
+        end = new Vector2(20f, Random.Range(-4f, 2f));
     }
 
     void TeleportToStart()
