@@ -3484,13 +3484,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layout: {fileID: 0}
   type: 0
-  lootTable:
-  - {fileID: 8626134684881450564, guid: d7dd369600930a9408ab4d4341727bfa, type: 3}
-  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
-  - {fileID: 39494173663627561, guid: 06a01369d3d7bde4eaef59f9a4fc5b26, type: 3}
-  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  definiteLootTable:
+  - {fileID: 2681786818365114525, guid: ab702267cc0dfcc40a9cbbdf5be984f1, type: 3}
   - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  - {fileID: 8626134684881450564, guid: d7dd369600930a9408ab4d4341727bfa, type: 3}
+  aboutNumHealingItems: 1
+  possibleHealingItems:
+  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
+  aboutNumBoostItems: 2
+  possibleBoostItems:
+  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  - {fileID: 1978209484173779876, guid: 8ffa449724c6699469b0b7897023bf1e, type: 3}
+  - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
+  - {fileID: 2681786818365114525, guid: ab702267cc0dfcc40a9cbbdf5be984f1, type: 3}
+  enemiesPerWave: 
   currentState: 0
   enemyPrefabs: []
 --- !u!1 &6441949927679017300

@@ -12,7 +12,15 @@ public class Room : MonoBehaviour
     RoomType type;
 
     [SerializeField]
-    GameObject[] lootTable;
+    GameObject[] definiteLootTable;
+    [SerializeField]
+    int aboutNumHealingItems;
+    [SerializeField]
+    GameObject[] possibleHealingItems;
+    [SerializeField]
+    int aboutNumBoostItems;
+    [SerializeField]
+    GameObject[] possibleBoostItems;
 
     [SerializeField]
     int[] enemiesPerWave;
@@ -47,18 +55,18 @@ public class Room : MonoBehaviour
     public IList<Transform> SpawnPoints { get => spawnPoints; set => spawnPoints = value; }
     public bool RoomDone { get => roomDone; set => roomDone = value; }
 
-	public void Awake() {
-		//layout
-		layout = GetComponent<RoomLayout>();
+    public void Awake() {
+        //layout
+        layout = GetComponent<RoomLayout>();
 
         spawnPoints = GetSpawnPoints();
 
-		//loot
+        //loot
         loot = CreateLoot();
-		//determine waves
+        //determine waves
         enemyWaves = CreateWaves();
-		
-	}
+
+    }
 
     void SetState(RoomStates state)
     {
@@ -69,7 +77,7 @@ public class Room : MonoBehaviour
 
     void OnStateChange(RoomStates oldState, RoomStates currentState)
     {
-        switch(currentState)
+        switch (currentState)
         {
             case RoomStates.Done:
                 FinishedRoom();
@@ -124,7 +132,7 @@ public class Room : MonoBehaviour
 
     protected virtual void EnterFight()
     {
-        if(enemyWaves[currentWave].IsCompleted())
+        if (enemyWaves[currentWave].IsCompleted())
         {
             currentWave++;
             CurrentState = RoomStates.SpawnEnemies;
@@ -133,7 +141,7 @@ public class Room : MonoBehaviour
 
     void OnEnemyKill()
     {
-        if(CurrentState == RoomStates.FightEnemies)
+        if (CurrentState == RoomStates.FightEnemies)
         {
             enemyWaves[currentWave].RemainingEnemies--;
             CurrentState = RoomStates.FightEnemies;
@@ -142,11 +150,11 @@ public class Room : MonoBehaviour
 
     void SpawnEnemies()
     {
-        if(currentWave < enemyWaves.Count && SpawnPoints.Count > 0)
+        if (currentWave < enemyWaves.Count && SpawnPoints.Count > 0)
         {
             // Spawn Enemies
             EnemyWave enemyWave = enemyWaves[currentWave];
-            for(int i = 0; i < enemyWave.RemainingEnemies; ++i)
+            for (int i = 0; i < enemyWave.RemainingEnemies; ++i)
             {
                 int spawnPoint = Random.Range(0, SpawnPoints.Count);
                 int enemy = Random.Range(0, enemyPrefabs.Length);
@@ -164,8 +172,9 @@ public class Room : MonoBehaviour
 
     void SpawnLoot()
     {
-        if(!spawnedLoot)
+        if (!spawnedLoot)
         {
+            //Add additional healing items if the party took to much damage
             foreach (GameObject obj in Loot)
             {
                 int spawnPoint = Random.Range(0, SpawnPoints.Count);
@@ -178,7 +187,7 @@ public class Room : MonoBehaviour
 
     Door GetDoor(DoorPosition pos)
     {
-        switch(pos)
+        switch (pos)
         {
             case DoorPosition.East:
                 return EastDoor();
@@ -238,17 +247,75 @@ public class Room : MonoBehaviour
     protected virtual IList<GameObject> CreateLoot()
     {
         IList<GameObject> loot = new List<GameObject>();
-        if(lootTable.Length == 0) {
+        if (definiteLootTable.Length == 0 && aboutNumBoostItems == 0 && aboutNumHealingItems == 0) {
             return loot;
         }
 
+        int numHealingItems = Mathf.Max(0, aboutNumHealingItems - Random.Range(-1, 1));
+        int numBoostItems = Mathf.Max(0, aboutNumBoostItems - Random.Range(-1, 1));
 
-        int count = Random.Range(5, 7);
-        for(int i = 0; i < count; ++i)
+        //Add the definitiveLoot
+        if (definiteLootTable.Length != 0)
         {
-            int index = Random.Range(0, lootTable.Length);
-            loot.Add(lootTable[index]);
+            for (int i = 0; i < definiteLootTable.Length; i++)
+            {
+                loot.Add(definiteLootTable[i]);
+            }
         }
+
+        //Add the healing items
+        //Items at the beginning of the list are added with a higher probability
+        if(numHealingItems != 0)
+        {
+            //Build a probability generator (sort of)
+            List<int> probabilities = new List<int>();
+            for(int i = 0; i < possibleHealingItems.Length; i++)
+            {
+                for(int j = 0; j <= Mathf.Max(0, 8 - 2*i); j++)
+                {
+                    probabilities.Add(i);
+                }
+            } 
+            
+            //Add healing items by picking one of the items in the generator randomly
+            for(int i = 0; i < numHealingItems; i++)
+            {
+                int index = Random.Range(0, probabilities.Count);
+                loot.Add(possibleHealingItems[probabilities[index]]);
+            }
+            
+        }
+
+        //Add the boost items
+        //Items at the beginning of the list are added with a higher probability
+        if (numBoostItems != 0)
+        {
+            //Build a probability generator (sort of)
+            List<int> probabilities = new List<int>();
+            for (int i = 0; i < possibleBoostItems.Length; i++)
+            {
+                for (int j = 0; j <= Mathf.Max(0, 8 - 2 * i); j++)
+                {
+                    probabilities.Add(i);
+                }
+            }
+
+            //Add boost items by picking one of the items in the generator randomly
+            for (int i = 0; i < numBoostItems; ++i)
+            {
+                int index = Random.Range(0, probabilities.Count);
+                loot.Add(possibleBoostItems[probabilities[index]]);
+            }
+
+        }
+
+
+        //for (int i = 0; i < count; ++i)
+        //{
+        //    int index = Random.Range(0, definiteLootTable.Length);
+        //    loot.Add(definiteLootTable[index]);
+        //}
+
         return loot;
     }
 
