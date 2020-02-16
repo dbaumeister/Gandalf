@@ -69,6 +69,12 @@ public class Inventory : MonoBehaviour
             booze.StartingTime = Time.time;
         }
 
+        MagicalBambooCollectable bamboo = collision.collider.GetComponent<MagicalBambooCollectable>();
+        if (bamboo)
+        {
+            bamboo.PickUpTime = Time.time;
+            bamboo.NextTime = bamboo.PickUpTime + bamboo.TimeStep;
+        }
 
         if (item || modifier || coffee || booze)
         {
