@@ -8,6 +8,7 @@ public class Boss_Ground_Enter_Stage : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<Boss>().Vulnerable = false;
+        animator.GetComponent<Boss>().CurrentStage = Boss.Stage.Ground;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -477,7 +477,7 @@ PrefabInstance:
     - target: {fileID: 1522031079993062990, guid: e9886065946c3a045b38731e23958859,
         type: 3}
       propertyPath: hearts
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1522031079993062990, guid: e9886065946c3a045b38731e23958859,
         type: 3}

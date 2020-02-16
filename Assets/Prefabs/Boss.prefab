@@ -155,6 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b1f24f6f41e3c64eb78127c2c779d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundHealth: 10
+  flightHealth: 10
+  plumpsHealth: 10
 --- !u!114 &-5667628739465721344
 MonoBehaviour:
   m_ObjectHideFlags: 0

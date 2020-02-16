@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossRooms:
-  - {fileID: -1182254106530964419, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
+  - {fileID: 6204368699527503495, guid: 86053064deefff96d88f3cfa605d6a71, type: 3}
   fightRooms:
   - {fileID: 1235277102490755449, guid: 4469c30056d243d42b7e66e83418d8c1, type: 3}
   - {fileID: -3675719792164452764, guid: 1e7990be0c78e5c409cf7744521689e9, type: 3}
@@ -572,8 +572,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 987000355}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 0.038, y: -0, z: 0}
+  m_LocalScale: {x: 2.1819599, y: 2.428758, z: 1}
   m_Children: []
   m_Father: {fileID: 1102736610}
   m_RootOrder: 0
@@ -616,7 +616,7 @@ SpriteRenderer:
   m_SortingLayerID: -381006701
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a72ad99b9c0bfd140b52517ce9355007, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c6a603fd4a35cdf4b944e32354f3aaaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13564,7 +13564,7 @@ Transform:
   m_GameObject: {fileID: 1724820172}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2.18823, y: 2.455256, z: 1}
   m_Children: []
   m_Father: {fileID: 1102736610}
   m_RootOrder: 1
@@ -13607,7 +13607,7 @@ SpriteRenderer:
   m_SortingLayerID: -381006701
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3d99ba93655876e4aaf1e44fe24fa559, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ee2fc83f0c70d94ead044d08ee83c64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
