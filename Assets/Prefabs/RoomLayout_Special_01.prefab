@@ -7070,7 +7070,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layout: {fileID: 0}
   type: 0
-  lootTable:
+  definiteLootTable:
+  - {fileID: 4306352192022520235, guid: 83a55e4eadb1009468037c9b2aa969b1, type: 3}
+  aboutNumHealingItems: 2
+  possibleHealingItems:
+  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
+  aboutNumBoostItems: 2
+  possibleBoostItems:
+  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  - {fileID: 4306352192022520235, guid: 83a55e4eadb1009468037c9b2aa969b1, type: 3}
+  - {fileID: 39494173663627561, guid: 42d42132434f2884c8117b9a79517031, type: 3}
+  - {fileID: 8626134684881450564, guid: d7dd369600930a9408ab4d4341727bfa, type: 3}
+  - {fileID: 7300891819542836966, guid: 425d58726e2e21d4b81375ba6b87f0e1, type: 3}
   - {fileID: 2681786818365114525, guid: 5ec2daaed422f03429ae62ef3e870819, type: 3}
   enemiesPerWave: 
   currentState: 0

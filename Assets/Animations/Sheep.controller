@@ -69,28 +69,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1101 &-8542955749429789054
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 3874964472877310896}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75409836
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1101 &-8461248740575677932
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -124,7 +102,7 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: -8542955749429789054}
+  - {fileID: 2064952621012451092}
   m_StateMachineBehaviours:
   - {fileID: 8945857974258226733}
   m_Position: {x: 50, y: 50, z: 0}
@@ -376,31 +354,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &-2521093577186695085
-AnimatorStateTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Boss_Flight_Take_Damage
-    m_EventTreshold: 0
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -468764144291489981}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 3
-  m_TransitionDuration: 0.25
-  m_TransitionOffset: 0
-  m_ExitTime: 0.75409836
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
-  m_InterruptionSource: 0
-  m_OrderedInterruption: 1
-  m_CanTransitionToSelf: 1
 --- !u!1107 &-2456560677390006607
 AnimatorStateMachine:
   serializedVersion: 5
@@ -424,34 +377,37 @@ AnimatorStateMachine:
     m_Position: {x: 180, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3874964472877310896}
-    m_Position: {x: 180, y: -190, z: 0}
+    m_Position: {x: 180, y: -380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4028677175374674140}
     m_Position: {x: -50, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -468764144291489981}
-    m_Position: {x: -50, y: -190, z: 0}
+    m_Position: {x: -50, y: -380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5326743698882018370}
-    m_Position: {x: 180, y: -260, z: 0}
+    m_Position: {x: 180, y: -450, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 320061791260564993}
-    m_Position: {x: 390, y: -360, z: 0}
+    m_Position: {x: 390, y: -550, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8668196759414767400}
-    m_Position: {x: 630, y: -400, z: 0}
+    m_Position: {x: 630, y: -590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6686816249917561627}
-    m_Position: {x: 860, y: -400, z: 0}
+    m_Position: {x: 860, y: -590, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2183255655430997525}
-    m_Position: {x: 390, y: -430, z: 0}
+    m_Position: {x: 390, y: -620, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9088805776648261203}
-    m_Position: {x: 180, y: -580, z: 0}
+    m_Position: {x: 180, y: -770, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -231824503308528544}
-    m_Position: {x: 600, y: -580, z: 0}
+    m_Position: {x: 600, y: -770, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 2284568011496587220}
+    m_Position: {x: 180, y: -250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -601,6 +557,12 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
+  - m_Name: Boss_Flight_Fly
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -713,6 +675,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a3f3dd5209448542a4f812f805ca5de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1101 &2064952621012451092
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 2284568011496587220}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75409836
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1102 &2183255655430997525
 AnimatorState:
   serializedVersion: 5
@@ -736,6 +720,33 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 0500e22534682664e8406eb0b5ac6531, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &2284568011496587220
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Boss_Flight_Enter_Stage_TakeOff
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions:
+  - {fileID: 5458291762166124412}
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: d64b7aa230229504da56911f9fc5812a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -789,7 +800,6 @@ AnimatorState:
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
-  - {fileID: -2521093577186695085}
   - {fileID: -2965659969693540117}
   m_StateMachineBehaviours:
   - {fileID: 4020704328957838253}
@@ -936,6 +946,31 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7078215114145703501}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75409836
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
+--- !u!1101 &5458291762166124412
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: Boss_Flight_Fly
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 3874964472877310896}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0

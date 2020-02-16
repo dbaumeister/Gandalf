@@ -20,7 +20,6 @@ public class Boss_Flight_Fly : StateMachineBehaviour
     void TeleportToStart()
     {
         rb.transform.position = start;
-        rb.position = rb.transform.position;
     }
 
     bool IsCloseToEnd(Vector2 pos)

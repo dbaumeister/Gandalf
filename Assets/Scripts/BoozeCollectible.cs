@@ -11,8 +11,8 @@ public class BoozeCollectible : Item
 
     public void Start()
     {
-        duration = 60;
-        hangover = 60;
+        duration = 60f;
+        hangover = 60f;
     }
     public override Attributes Apply(Attributes other)
     {

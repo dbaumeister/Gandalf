@@ -56,7 +56,6 @@ public class Boss_Ground_Run : StateMachineBehaviour
     {
         speed = 10.0f;
         GenerateRandomTargetLocation(animator.GetComponent<Rigidbody2D>().position);
-        RollNewAttackTime();
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
