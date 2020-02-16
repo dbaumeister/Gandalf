@@ -7,6 +7,8 @@ public class BossWalk : StateMachineBehaviour
     [SerializeField]
     Vector2 targetLocation = Vector2.zero;
 
+    float newAttackTime = 0;
+
     void GenerateRandomTargetLocation(Vector2 pos)
     {
         Vector2 leftUpper = new Vector2(-10, 3);
@@ -39,10 +41,21 @@ public class BossWalk : StateMachineBehaviour
         }
     }
 
+    void RollNewAttackTime()
+    {
+        newAttackTime = Time.time + Random.Range(3f, 7f);
+    }
+
+    bool CanAttack()
+    {
+        return newAttackTime < Time.time;
+    }
+
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         GenerateRandomTargetLocation(animator.GetComponent<Rigidbody2D>().position);
+        RollNewAttackTime();
     }
 
     //OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -50,11 +63,17 @@ public class BossWalk : StateMachineBehaviour
     {
         WalkToTargetLocation(animator.GetComponent<Rigidbody2D>());
         animator.GetComponent<BossLook>().LookInMoveDirection();
+
+        if(CanAttack())
+        {
+            animator.SetTrigger("Stage_1_Attack");
+            RollNewAttackTime();
+        }
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        animator.ResetTrigger("Stage_1_Attack");
     }
 }
