@@ -38,13 +38,8 @@ public class NpcInteraction : MonoBehaviour
             npc = npc;
         }
 
-        // TODO: put some sort of NpcDialog somewhere, and set that up here
-        if (npc.Message == null) {
-            Debug.Log("Interact with " + npc.Name);
-        }
-        else {
-            Debug.Log(npc.Name + ": " + npc.Message);
-        }
+        npc.ShowSpeechBubble();
+
         StopInteraction();
     }
 
