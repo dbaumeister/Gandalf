@@ -61,10 +61,15 @@ public class Weapon : MonoBehaviour
 
             Projectile projectile = Instantiate(projectilePrefab);
             projectile.transform.position = point.position;
-            projectile.MovementSpeed = attributes.ProjectileSpeed;
+            if (attributes.ProjectileSpeed < 0)
+            {
+                projectile.MovementSpeed = Mathf.Max(attributes.ProjectileSpeed, (-1) * attributes.MaxAbsoluteProjectileSpeed);
+            }
+            else
+            { projectile.MovementSpeed = Mathf.Min(attributes.ProjectileSpeed, attributes.MaxAbsoluteProjectileSpeed); }
             projectile.Direction = Direction;
-            projectile.transform.localScale *= attributes.ProjectileSize;
-            nextShotTime = Time.time + attributes.AttackDelay;
+            projectile.transform.localScale *= Mathf.Min(attributes.ProjectileSize, attributes.MaxProjectileSize);
+            nextShotTime = Time.time + Mathf.Max(attributes.AttackDelay, attributes.MaxAttackDelay);
         }
     }
 

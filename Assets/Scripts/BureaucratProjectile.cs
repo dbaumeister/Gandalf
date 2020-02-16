@@ -53,6 +53,7 @@ public class BureaucratProjectile : MonoBehaviour
         {
             col.gameObject.GetComponent<Appearance>().Hurt();
             GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
+
             
         }
         killSelf();

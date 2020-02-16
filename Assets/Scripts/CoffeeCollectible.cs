@@ -12,6 +12,7 @@ public class CoffeeCollectible : Item
     {
         duration = Random.Range(15, 31);
     }
+
     public override Attributes Apply(Attributes other)
     {
         if(Time.time < startingTime + duration)

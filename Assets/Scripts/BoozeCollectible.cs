@@ -5,27 +5,32 @@ using UnityEngine;
 public class BoozeCollectible : Item
 {
     float duration = 0;
+    float hangover = 0;
     // start is set when picking up the item (Inventory-collision)
     float startingTime = 0;
 
     public void Start()
     {
-        duration = 45;
+        duration = 60;
+        hangover = 60;
     }
     public override Attributes Apply(Attributes other)
     {
         if (Time.time < startingTime + duration)
         {
-            other.MovementSpeed *= 1.6f;
-            other.ProjectileSpeed *= 1.6f;
-            other.AttackDelay *= 0.5f;
+            other.MovementSpeed += 4f;
+            other.ProjectileSpeed += 4f;
+            other.AttackDelay *= 0.2f;
         }
 
-        if (Time.time > startingTime + duration)
+        else
         {
-            other.MovementSpeed *= 0.6f;
-            other.ProjectileSpeed *= 0.6f;
-            other.AttackDelay *= 1.5f;
+            if (Time.time < startingTime + duration + hangover)
+            {
+                other.MovementSpeed *= 0.5f;
+                other.ProjectileSpeed *= 0.5f;
+                other.AttackDelay += 0.3f;
+            }
         }
 
         return other;

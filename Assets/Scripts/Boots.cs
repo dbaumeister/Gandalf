@@ -31,7 +31,16 @@ public class Boots : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 move = attributes.MovementSpeed * Direction * Time.fixedDeltaTime;
+        Vector2 move;
+        if(attributes.MovementSpeed < 0)
+        {
+            move = Mathf.Max(attributes.MovementSpeed, (-1) * attributes.MaxAbsoluteSpeed) * Direction * Time.fixedDeltaTime;
+        }
+        else
+        {
+            move = Mathf.Min(attributes.MovementSpeed, attributes.MaxAbsoluteSpeed) * Direction * Time.fixedDeltaTime;
+        }
+        
         rigidbody.MovePosition(rigidbody.position + move);
     }
 }
