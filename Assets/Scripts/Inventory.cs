@@ -28,12 +28,11 @@ public class Inventory : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        GroupValues values = GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>();
 
         ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
         if (modifier)
         {
-            GroupValues values = GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>();
             //pickung up the item does not increase the number of hearts higher than allowed
             if (values.getHearts() < values.getMaxHearts())
             {
@@ -72,9 +71,15 @@ public class Inventory : MonoBehaviour
             {
                 AudioManager.PlaySound(item.Sound);
             }
-            Destroy(collision.collider.gameObject);
-
-
+            
+            if(modifier && values.getMaxHearts() == values.getHearts())
+            {
+                // Do not destroy the game object if our hearts are full
+            }
+            else
+            {
+                Destroy(collision.collider.gameObject);
+            }
         }
     }
 
