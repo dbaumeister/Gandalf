@@ -8,6 +8,7 @@ public class BossWalk : StateMachineBehaviour
     Vector2 targetLocation = Vector2.zero;
 
     float newAttackTime = 0;
+    float speed = 0f;
 
     void GenerateRandomTargetLocation(Vector2 pos)
     {
@@ -31,7 +32,6 @@ public class BossWalk : StateMachineBehaviour
 
     void WalkToTargetLocation(Rigidbody2D rb)
     {
-        float speed = 10.0f;
         Vector2 newPosition = Vector2.MoveTowards(rb.position, targetLocation, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPosition);
 
@@ -54,6 +54,7 @@ public class BossWalk : StateMachineBehaviour
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        speed = 10.0f;
         GenerateRandomTargetLocation(animator.GetComponent<Rigidbody2D>().position);
         RollNewAttackTime();
     }
@@ -66,6 +67,11 @@ public class BossWalk : StateMachineBehaviour
 
         if(CanAttack())
         {
+            // Force to look to the left
+            targetLocation = animator.GetComponent<Rigidbody2D>().position + 20 * Vector2.left;
+            animator.GetComponent<BossLook>().LookInMoveDirection();
+            speed = 0.1f;
+
             animator.SetTrigger("Stage_1_Attack");
             RollNewAttackTime();
         }

@@ -7,19 +7,14 @@ public class BossSpeechBubble : MonoBehaviour
     [SerializeField]
     GameObject bubble;
 
-    float hideTime;
-
-    void Update()
+    public void ShowSpeechBubble()
     {
-        if(Time.time > hideTime)
-        {
-            bubble.SetActive(false);
-        }
+        bubble.SetActive(true);
     }
 
-    public void ShowSpeechBubble(float seconds)
+
+    public void HideSpeechBubble()
     {
-        hideTime = Time.time + seconds;
-        bubble.SetActive(true);
+        bubble.SetActive(false);
     }
 }
