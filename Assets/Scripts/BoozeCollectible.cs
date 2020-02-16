@@ -14,6 +14,7 @@ public class BoozeCollectible : Item
         duration = 60f;
         hangover = 60f;
     }
+
     public override Attributes Apply(Attributes other)
     {
         if (Time.time < startingTime + duration)
