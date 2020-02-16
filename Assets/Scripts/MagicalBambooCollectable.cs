@@ -23,7 +23,10 @@ public class MagicalBambooCollectable : Item
         //It's time to heal
         if(Time.time >= nextTime)
         {
-            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(1);
+            if (GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().getMaxHearts() > GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().getHearts())
+            {
+                GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(1);
+            }
             nextTime = Time.time + timeStep;
         }
         return other;
