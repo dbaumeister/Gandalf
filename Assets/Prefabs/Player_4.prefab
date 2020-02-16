@@ -193,6 +193,12 @@ MonoBehaviour:
   projectileSize: 2
   projectileCount: 2
   weaponDamage: 2
+  maxAbsoluteSpeed: 16
+  maxAttackDelay: 0.1
+  maxAbsoluteProjectileSpeed: 30
+  maxProjectileRange: 1
+  maxProjectileSize: 6
+  maxWeaponDamage: 20
 --- !u!114 &4930785555248026040
 MonoBehaviour:
   m_ObjectHideFlags: 0

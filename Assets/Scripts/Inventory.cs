@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
 
     Weapon weapon;
 
+    int maxHearts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,19 @@ public class Inventory : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
+        ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
+        if (modifier)
+        {
+            GroupValues values = GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>();
+            //pickung up the item does not increase the number of hearts higher than allowed
+            if (values.getHearts() < values.getMaxHearts())
+            {
+                GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(Mathf.Min(modifier.lifeModificator, values.getMaxHearts() - values.getHearts()));
+            }
+        }
+
         Item item = collision.collider.GetComponent<Item>();
         if (item)
         {
@@ -35,13 +50,6 @@ public class Inventory : MonoBehaviour
                 weapon.projectilePrefab = mod.projectile;
             }
             items.Add(item);
-        }
-
-
-        ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
-        if (modifier)
-        {
-            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
         }
 
 
