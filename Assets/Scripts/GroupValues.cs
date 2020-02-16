@@ -15,43 +15,39 @@ public class GroupValues : MonoBehaviour
     [SerializeField]
     float heartDistance = 0.3f;
     [SerializeField]
-    uint heartRowLength = 60;
-    [SerializeField]
     int heartsPerPlayer = 10;
 
-    private int maxHearts = 20;
+    [SerializeField]
+    int maxHearts = 10;
 
     public delegate void PlayersDied();
     public event PlayersDied OnPlayersDied;
 
-    List<GameObject> heartObjects;
-
     Vector3 heartLocation(int heartIndex) {
-        return Vector3.right * (heartIndex % heartRowLength * heartDistance) + Vector3.down * (heartIndex / heartRowLength * heartDistance);
+        return Vector3.right * (heartIndex * heartDistance);
     }
 
     void Awake() {
-        heartObjects = new List<GameObject>();
         setHearts(hearts);
     }
 
-    void Start()
-    {
-        GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
-        int numPlayer = allPlayers.Length;
-        maxHearts = numPlayer * heartsPerPlayer;
-    }
+    //void Start()
+    //{
+    //    GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
+    //    int numPlayer = allPlayers.Length;
+    //    maxHearts = numPlayer * heartsPerPlayer;
+    //}
 
     void setHearts(int hearts) {
         this.hearts = hearts;
-
-        for (int i=hearts; i < heartObjects.Count; ++i) {
-            heartObjects.RemoveAt(hearts);
+        int count = transform.childCount;
+        for (int i = 0; i < count; ++i)
+        {
+            Destroy(transform.GetChild(i).gameObject);
         }
-        for (int i=heartObjects.Count; i < hearts; ++i) {
+        for (int i = 0; i < hearts; ++i) {
             GameObject obj = Instantiate(heartsPrefab, transform);
             obj.transform.Translate(heartLocation(i));
-            heartObjects.Add(obj);
         }
 
         if (hearts <= 0) {
@@ -65,6 +61,7 @@ public class GroupValues : MonoBehaviour
             }
         }
     }
+
 
     public int getHearts()
     {

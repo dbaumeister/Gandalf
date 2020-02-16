@@ -6,9 +6,8 @@ public class FireballCollectible : Item
 {
     public override Attributes Apply(Attributes other)
     {
-        other.ProjectileSize += 1;
-        other.ProjectileSpeed += 1;
-        other.AttackDelay -= 0.5f;
+        other.ProjectileSpeed *= 1.5f;
+        other.AttackDelay *= 0.7f;
         return other;
     }
 }

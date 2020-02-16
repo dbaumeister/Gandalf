@@ -6,7 +6,8 @@ public class SnowballCollectible : Item
 {
     public override Attributes Apply(Attributes other)
     {
-        other.AttackDelay += 0.5f;
+        other.ProjectileSize += 1f;
+        other.AttackDelay *= 1.5f;
         other.WeaponDamage += 10;
         return other;
     }

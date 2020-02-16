@@ -6,7 +6,7 @@ public class SpeedCollectible : Item
 {
     public override Attributes Apply(Attributes other)
     {
-        other.MovementSpeed += 1;
+        other.MovementSpeed += 2;
         return other;
     }
 }
