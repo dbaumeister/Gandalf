@@ -31,12 +31,17 @@ public class Inventory : MonoBehaviour
         GroupValues values = GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>();
 
         ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
+        bool wasFull = false;
         if (modifier)
         {
             //pickung up the item does not increase the number of hearts higher than allowed
             if (values.getHearts() < values.getMaxHearts())
             {
                 GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(Mathf.Min(modifier.lifeModificator, values.getMaxHearts() - values.getHearts()));
+            }
+            else
+            {
+                wasFull = true;
             }
         }
 
@@ -66,18 +71,19 @@ public class Inventory : MonoBehaviour
 
 
         if (item || modifier || coffee || booze)
-        {            
-            if (item.Sound)
-            {
-                AudioManager.PlaySound(item.Sound);
-            }
-            
-            if(modifier && values.getMaxHearts() == values.getHearts())
+        {
+            if(modifier && wasFull)
             {
                 // Do not destroy the game object if our hearts are full
             }
             else
             {
+
+                if (item.Sound)
+                {
+                    AudioManager.PlaySound(item.Sound);
+                }
+
                 Destroy(collision.collider.gameObject);
             }
         }
