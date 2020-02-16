@@ -8,8 +8,28 @@ public class Npc : MonoBehaviour
     string name = "Npc";
 
     [SerializeField]
-    string message = null;
+    GameObject bubble;
 
     public string Name { get => name; }
-    public string Message { get => message; }
+
+    float hideTime = 0;
+
+    void Update()
+    {
+        if(Time.time > hideTime)
+        {
+            HideSpeechBubble();
+        }
+    }
+
+    public void ShowSpeechBubble()
+    {
+        bubble.SetActive(true);
+        hideTime = Time.time + 2;
+    }
+
+    public void HideSpeechBubble()
+    {
+        bubble.SetActive(false);
+    }
 }
