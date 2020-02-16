@@ -4,12 +4,21 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
+    public enum Stage
+    {
+        Ground,
+        Flight,
+        Plumps
+    }
+
     [SerializeField]
-    float groundHealth = 100;
+    float groundHealth = 10;
     [SerializeField]
-    float flightHealth = 100;
+    float flightHealth = 10;
     [SerializeField]
-    float plumpsHealth = 100;
+    float plumpsHealth = 10;
+
+    Stage currentStage;
 
     public delegate void BossKilled();
     public event BossKilled OnBossKilled;
@@ -20,6 +29,7 @@ public class Boss : MonoBehaviour
     public float PlumpsHealth { get => plumpsHealth; set => plumpsHealth = value; }
     public bool Vulnerable { get => vulnerable; set => vulnerable = value; }
     public float GroundHealth { get => groundHealth; set => groundHealth = value; }
+    public Stage CurrentStage { get => currentStage; set => currentStage = value; }
 
     Animator animator;
 
@@ -30,13 +40,40 @@ public class Boss : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("TODO: Deal Damage to player or take damage from player");
+        if(collision.gameObject.tag == "Projectile")
+        {
+            float damage = GameObject.FindGameObjectWithTag("Player").GetComponent<Attributes>().WeaponDamage;
+            TakeDamage(damage);
+        }
+
+        if(collision.gameObject.tag == "Player")
+        {
+            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().takeHearts(1);
+        }
+    }
+
+    void TakeDamage(float damage)
+    {
+        if (!Vulnerable) return;
+
+        switch(CurrentStage)
+        {
+            case Stage.Ground:
+                GroundTakeDamage(damage);
+                break;
+            case Stage.Flight:
+                FlightTakeDamage(damage);
+                break;
+            case Stage.Plumps:
+                PlumpsTakeDamage(damage);
+                break;
+        }
+
+        Debug.Log("GroundHealth: " + GroundHealth + ", FlightHealth: " + FlightHealth + ", PlumpsHealth: " + PlumpsHealth);
     }
 
     void GroundTakeDamage(float damage)
     {
-        if (!Vulnerable) return;
-
         GroundHealth -= damage;
 
         if (GroundHealth <= 0)
@@ -50,8 +87,6 @@ public class Boss : MonoBehaviour
 
     void FlightTakeDamage(float damage)
     {
-        if (!Vulnerable) return;
-
         FlightHealth -= damage;
 
         if (FlightHealth <= 0)
@@ -65,8 +100,6 @@ public class Boss : MonoBehaviour
 
     void PlumpsTakeDamage(float damage)
     {
-        if (!Vulnerable) return;
-
         PlumpsHealth -= damage;
 
         if (PlumpsHealth <= 0)
