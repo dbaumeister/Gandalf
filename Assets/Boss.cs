@@ -9,7 +9,7 @@ public class Boss : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     void OnDestroy()
