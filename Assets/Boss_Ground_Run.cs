@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossWalk : StateMachineBehaviour
+public class Boss_Ground_Run : StateMachineBehaviour
 {
     [SerializeField]
     Vector2 targetLocation = Vector2.zero;
@@ -18,7 +18,7 @@ public class BossWalk : StateMachineBehaviour
         Vector2 random = new Vector2(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
         targetLocation = leftUpper + random * distance;
 
-        if(Vector2.Distance(targetLocation, pos) < 3)
+        if (Vector2.Distance(targetLocation, pos) < 3)
         {
             GenerateRandomTargetLocation(pos);
         }
@@ -63,23 +63,21 @@ public class BossWalk : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         WalkToTargetLocation(animator.GetComponent<Rigidbody2D>());
-        animator.GetComponent<BossLook>().LookInMoveDirection();
-
-        if(CanAttack())
+        if (CanAttack())
         {
             // Force to look to the left
             targetLocation = animator.GetComponent<Rigidbody2D>().position + 20 * Vector2.left;
-            animator.GetComponent<BossLook>().LookInMoveDirection();
             speed = 0.1f;
 
-            animator.SetTrigger("Stage_1_Attack");
+            animator.SetTrigger("Boss_Ground_Attack");
             RollNewAttackTime();
         }
+        animator.GetComponent<BossLook>().LookInMoveDirection();
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.ResetTrigger("Stage_1_Attack");
+        animator.ResetTrigger("Boss_Ground_Attack");
     }
 }

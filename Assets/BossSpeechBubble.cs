@@ -12,7 +12,6 @@ public class BossSpeechBubble : MonoBehaviour
         bubble.SetActive(true);
     }
 
-
     public void HideSpeechBubble()
     {
         bubble.SetActive(false);
