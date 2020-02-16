@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
 
     Weapon weapon;
 
+    int maxHearts;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,15 @@ public class Inventory : MonoBehaviour
         ModifyLife modifier = collision.collider.GetComponent<ModifyLife>();
         if (modifier)
         {
-            GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
+            GroupValues values = GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>();
+            Debug.Log(values.getHearts());
+            Debug.Log(values.getMaxHearts());
+            //pickung up the item does not increase the number of hearts higher than allowed
+            if (values.getHearts() + modifier.lifeModificator < values.getMaxHearts())
+            {
+                GameObject.FindGameObjectWithTag("GroupValues").GetComponent<GroupValues>().addHearts(modifier.lifeModificator);
+            }
+            
         }
 
 

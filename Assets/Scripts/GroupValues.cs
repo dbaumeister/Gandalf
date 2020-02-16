@@ -16,6 +16,10 @@ public class GroupValues : MonoBehaviour
     float heartDistance = 0.3f;
     [SerializeField]
     uint heartRowLength = 60;
+    [SerializeField]
+    int heartsPerPlayer = 10;
+
+    private int maxHearts = 20;
 
     public delegate void PlayersDied();
     public event PlayersDied OnPlayersDied;
@@ -29,6 +33,13 @@ public class GroupValues : MonoBehaviour
     void Awake() {
         heartObjects = new List<GameObject>();
         setHearts(hearts);
+    }
+
+    void Start()
+    {
+        GameObject[] allPlayers = GameObject.FindGameObjectsWithTag("Player");
+        int numPlayer = allPlayers.Length;
+        maxHearts = numPlayer * heartsPerPlayer;
     }
 
     void setHearts(int hearts) {
@@ -66,5 +77,13 @@ public class GroupValues : MonoBehaviour
     public void takeHearts(int hearts)
     {
         setHearts(this.hearts - hearts);
+    }
+    public int getHeartsPerPlayer()
+    {
+        return this.heartsPerPlayer;
+    }
+    public int getMaxHearts()
+    {
+        return this.maxHearts;
     }
 }
