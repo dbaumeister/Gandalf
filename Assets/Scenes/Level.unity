@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossRooms:
-  - {fileID: -1182254106530964419, guid: 3ac9c8fac9a978243a15bd233f797e17, type: 3}
+  - {fileID: 6204368699527503495, guid: 86053064deefff96d88f3cfa605d6a71, type: 3}
   fightRooms:
   - {fileID: 1235277102490755449, guid: 4469c30056d243d42b7e66e83418d8c1, type: 3}
   - {fileID: -3675719792164452764, guid: 1e7990be0c78e5c409cf7744521689e9, type: 3}
