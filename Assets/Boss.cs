@@ -111,7 +111,7 @@ public class Boss : MonoBehaviour
         animator.SetTrigger("Boss_Plumps_Take_Damage");
     }
 
-    void DieAnimationEnded()
+    public void DieAnimationEnded()
     {
         Destroy(gameObject);
     }
