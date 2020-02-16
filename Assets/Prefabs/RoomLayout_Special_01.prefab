@@ -7074,7 +7074,7 @@ MonoBehaviour:
   - {fileID: 4306352192022520235, guid: 83a55e4eadb1009468037c9b2aa969b1, type: 3}
   aboutNumHealingItems: 2
   possibleHealingItems:
-  - {fileID: 39494173663627561, guid: 9d2d7572a5f2d064b9021ce8057b1332, type: 3}
+  - {fileID: 39494173663627561, guid: fe681ba082daef54da64d8a66493a8e6, type: 3}
   - {fileID: 39494173663627561, guid: a03d4638f5abaee4a8df09a1d2fc692c, type: 3}
   aboutNumBoostItems: 2
   possibleBoostItems:
