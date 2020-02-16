@@ -11822,7 +11822,7 @@ GameObject:
   - component: {fileID: 3684776177679954236}
   - component: {fileID: 3059522249714741142}
   - component: {fileID: 5140676559315334396}
-  - component: {fileID: -3461414817711454530}
+  - component: {fileID: 6204368699527503495}
   m_Layer: 0
   m_Name: RoomLayout_Boss_02
   m_TagString: Untagged
@@ -11910,7 +11910,7 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!114 &-3461414817711454530
+--- !u!114 &6204368699527503495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11919,11 +11919,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8872573182047447942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8ab6f7de4e2c04f994b44ada8d9fe3, type: 3}
+  m_Script: {fileID: 11500000, guid: cadc716b1f9e39d4091428e030623bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   layout: {fileID: 0}
   type: 0
+  lootTable: []
+  enemiesPerWave: 
   currentState: 0
-  enemyPrefabs:
-  - {fileID: 5333867156381111038, guid: 053e24a00c2c57f45abb372bf0f7576c, type: 3}
+  enemyPrefabs: []
+  boss: {fileID: 9108717579101431538, guid: 0775d9386b7ba8b4dbd6c68ca0935770, type: 3}
