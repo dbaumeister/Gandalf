@@ -80,7 +80,6 @@ public class Room : MonoBehaviour
             case RoomStates.Initial:
                 break;
             case RoomStates.SpawnEnemies:
-                Debug.Log("spwaning enemies");
                 SpawnEnemies();
                 break;
             case RoomStates.SpawnLoot:
@@ -123,9 +122,9 @@ public class Room : MonoBehaviour
         }
     }
 
-    void EnterFight()
+    protected virtual void EnterFight()
     {
-        if(enemyWaves[currentWave].RemainingEnemies <= 0)
+        if(enemyWaves[currentWave].IsCompleted())
         {
             currentWave++;
             CurrentState = RoomStates.SpawnEnemies;
@@ -222,7 +221,7 @@ public class Room : MonoBehaviour
     }
 
 
-    IList<EnemyWave> CreateWaves()
+    protected virtual IList<EnemyWave> CreateWaves()
     {
         IList<EnemyWave> enemyWaves = new List<EnemyWave>();
         int numWaves = enemiesPerWave.Length;
@@ -236,7 +235,7 @@ public class Room : MonoBehaviour
         return enemyWaves;
     }
 
-    IList<GameObject> CreateLoot()
+    protected virtual IList<GameObject> CreateLoot()
     {
         IList<GameObject> loot = new List<GameObject>();
         if(lootTable.Length == 0) {
@@ -253,7 +252,7 @@ public class Room : MonoBehaviour
         return loot;
     }
 
-    private IList<Transform> GetSpawnPoints()
+    protected virtual IList<Transform> GetSpawnPoints()
     {
         IList<Transform> positions = new List<Transform>();
         if(!layout)
